@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             let response = await fetch(
-                "https://script.google.com/macros/s/AKfycbx_rDVrpmgqDz_RW3PDcsfJJH-0P_1yOGMWC1AZmmH4dhXtBiGZo7IPyLFNhvmGtOClag/exec",
+                "https://script.google.com/macros/s/AKfycby2ASn4VtrMd4EebIA4mJuPm2yTUaHGXWpaVKTEkohYVx4MkupYj5ogjSltQZCRCO1adA/exec",
                 {
                     method: "POST",
                     mode: "cors", // Fixes CORS issue
