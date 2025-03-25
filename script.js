@@ -4,7 +4,7 @@ ddocument.getElementById("submitBtn").addEventListener("click", function (e) {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
 
-    fetch("https://script.google.com/macros/s/AKfycbyIA2mhgKyN7IU_TQOzpJylwbnH_YIIuQkOMeuKDImgoVZoGEX7DttBjcZtFvW9RMzL/exec, { // Replace with your actual Web App URL
+    fetch("https://script.google.com/macros/s/AKfycbzJkKzqvlZ3zryoqF1kZrni3vWWu0LQcMo-fFrg-ps7SSZK-cx9HrgTa2E-iJLYkxK-/exec", { // Replace with your actual Web App URL
         method: "POST",
         mode: "no-cors",
         headers: {
