@@ -1,35 +1,37 @@
-/* Make textboxes larger & visually appealing */
-input[type="text"], 
+/* Style the input fields */
+input[type="text"],
 input[type="email"] {
-    width: 100%; /* Full width */
-    max-width: 400px; /* Set a max width to prevent too large inputs */
-    padding: 15px; /* Increase padding for better spacing */
-    font-size: 1.2em; /* Make text inside the input larger */
+    width: 100%; /* Full width of their container */
+    max-width: 400px; /* Maximum width */
+    padding: 12px; /* Inner spacing */
+    font-size: 1.2em; /* Larger text */
     border: 2px solid #ccc; /* Subtle border */
     border-radius: 8px; /* Rounded corners */
-    margin-top: 10px; /* Add spacing */
+    margin-top: 10px; /* Space above each input */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 /* Style the submit button */
 button[type="submit"] {
     width: 100%;
     max-width: 420px;
-    padding: 15px;
+    padding: 12px;
     font-size: 1.3em;
     font-weight: bold;
-    background: #ff5733;
+    background: #ff5733; /* Button color */
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s;
+    margin-top: 10px; /* Space above the button */
 }
 
 button[type="submit"]:hover {
-    background: #ff2e00;
+    background: #ff2e00; /* Darker shade on hover */
 }
 
-/* Center align form */
+/* Center the form elements */
 #emailForm {
     display: flex;
     flex-direction: column;
