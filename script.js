@@ -1,4 +1,4 @@
-ddocument.getElementById("emailForm").addEventListener("submit", function (e) {
+document.getElementById("emailForm").addEventListener("submit", function (e) {
     e.preventDefault(); // Prevent page reload
 
     var name = document.getElementById("name").value;
