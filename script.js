@@ -1,4 +1,4 @@
-ddocument.getElementById("submitBtn").addEventListener("click", function (e) {
+document.getElementById("submitBtn").addEventListener("click", function (e) {
     e.preventDefault(); // Prevent form from reloading the page
 
     var name = document.getElementById("name").value;
