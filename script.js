@@ -15,7 +15,7 @@ document.getElementById("emailForm").addEventListener("submit", function (e) {
     localStorage.setItem("userEmail", email);
 
     // Replace with your actual Google Apps Script Web App URL
-    var webAppUrl = "https://script.google.com/macros/s/AKfycbzJkKzqvlZ3zryoqF1kZrni3vWWu0LQcMo-fFrg-ps7SSZK-cx9HrgTa2E-iJLYkxK-/exec"; 
+    var webAppUrl = "https://script.google.com/macros/s/AKfycbzJkKzqvlZ3zryoqF1kZrni3vWWu0LQcMo-fFrg-ps7SSZK-cx9HrgTa2E-iJLYkxK-/exec";
 
     fetch(webAppUrl, {
         method: "POST",
