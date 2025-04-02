@@ -15,13 +15,15 @@ document.getElementById("emailForm").addEventListener("submit", function (e) {
         },
         body: JSON.stringify({ name: name, email: email })
     }).then(() => {
-        alert("Form submitted successfully! Redirecting...");
+        alert("You're all set! 🎉 Your free eBook is on the way! 🚀 Plus, check out this powerful AI music tool for exclusive access. Redirecting now...");
 
-        // Redirect to Affiliate Link after form submission
-        window.location.href = "https://warriorplus.com/o2/a/rvksyyf/0"; // Replace with your affiliate link
+        // Redirect to Affiliate Link after 2 seconds
+        setTimeout(() => {
+            window.location.href = "https://warriorplus.com/o2/a/rvksyyf/0"; // Replace with your affiliate link
+        }, 2000);
     }).catch(error => {
         console.error("Error:", error);
-        alert("Error submitting form.");
+        alert("Oops! Something went wrong. Please try again later.");
     });
 });
 
@@ -29,4 +31,3 @@ document.getElementById("emailForm").addEventListener("submit", function (e) {
 document.getElementById("affiliateCTA").addEventListener("click", function () {
     window.location.href = "https://warriorplus.com/o2/a/rvksyyf/0"; // Replace with your affiliate link
 });
-
