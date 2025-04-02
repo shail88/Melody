@@ -27,5 +27,6 @@ document.getElementById("emailForm").addEventListener("submit", function (e) {
 
 // Update the Affiliate CTA button to redirect users
 document.getElementById("affiliateCTA").addEventListener("click", function () {
-    window.location.href = "YOUR_AFFILIATE_LINK"; // Replace with your affiliate link
+    window.location.href = "https://warriorplus.com/o2/a/rvksyyf/0"; // Replace with your affiliate link
 });
+
