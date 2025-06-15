@@ -9,16 +9,18 @@ document.addEventListener("DOMContentLoaded", function() {
         const email = document.getElementById("email").value;
         
         // Send data to Google Sheets
-        fetch("https://script.google.com/macros/s/AKfycbzNYZj27q9bY__i52nm6xWaCipbiScx612zAblyg-Ri0_QKTP-SgH4VWL7mjVg6D7cu/exec", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: name, email: email })
-        })
-        .then(response => response.text())
-        .then(data => {
-            alert("Success! Check your email for the free eBook.");
-            window.location.href = "YOUR_AFFILIATE_LINK"; // Redirect to affiliate link
-        })
-        .catch(error => console.error("Error:", error));
-    });
+      fetch('https://script.google.com/macros/s/your-script-id/exec', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'Shailendra',
+    email: 'you@example.com'
+  })
+})
+.then(response => response.json())
+.then(data => console.log('Success:', data))
+.catch(error => console.error('Error:', error));
+
 });
