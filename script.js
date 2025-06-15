@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const email = document.getElementById("email").value;
         
         // Send data to Google Sheets
-      fetch('https://script.google.com/macros/s/your-script-id/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbzNYZj27q9bY__i52nm6xWaCipbiScx612zAblyg-Ri0_QKTP-SgH4VWL7mjVg6D7cu/exec', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
