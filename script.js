@@ -1,32 +1,25 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const emailForm = document.getElementById("emailForm");
-    const affiliateCTA = document.getElementById("affiliateCTA");
+document.addEventListener("DOMContentLoaded", function() {
+  const emailForm = document.getElementById("emailForm");
 
-    emailForm.addEventListener("submit", function (event) {
-        event.preventDefault();
+  emailForm.addEventListener("submit", function(event) {
+    event.preventDefault();
 
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
 
-        // Send data to Google Sheets
-        fetch('https://script.google.com/macros/s/AKfycbzNYZj27q9bY__i52nm6xWaCipbiScx612zAblyg-Ri0_QKTP-SgH4VWL7mjVg6D7cu/exec', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                name: name,
-                email: email
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
-            // Optional: Redirect, show success message, or trigger affiliateCTA
-            // affiliateCTA.style.display = 'block'; // Example
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    fetch('https://script.google.com/macros/s/AKfycbwKl6Ts0loAVN9jFc9XYJlnGPp5_8GyS5FIMKR2cQMGncNwKBSMgUcPqalDefBid0Bj/exec', {
+      method: 'POST',
+      mode: 'no-cors', // IMPORTANT
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name: name, email: email })
+    }).then(response => {
+      console.log('Request sent successfully!');
+      alert("Thank you! Your data has been sent.");
+    }).catch(error => {
+      console.error(error);
+      alert("Error submitting data.");
     });
+  });
 });
