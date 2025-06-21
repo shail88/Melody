@@ -1,4 +1,4 @@
-<script>
+
 document.addEventListener("DOMContentLoaded", function() {
   const emailForm = document.getElementById("emailForm");
 
@@ -29,4 +29,4 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 });
-</script>
+
