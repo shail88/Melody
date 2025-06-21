@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
       body: JSON.stringify({ name: name, email: email })
     }).then(response => {
       console.log('Request sent successfully!');
-      alert("Thank you! Your data has been sent.");
+      alert("Thank you! Your Ebook  has been sent.");
       
   });
     }).catch(error => {
