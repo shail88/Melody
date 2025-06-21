@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }).then(response => {
       console.log('Request sent successfully!');
       alert("Thank you! Your data has been sent.");
-      ;
+      
   });
     }).catch(error => {
       console.error(error);
