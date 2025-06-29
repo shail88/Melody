@@ -33,16 +33,46 @@
         <img src="logo.png" alt="MelodyBox AI Logo" class="header-image" width="100">
     </header>
     
-    <section class="opt-in">
-        <h2>📥 Get Your Free AI Music Guide & Special Offer</h2>
-        <p>Enter your details to receive your free eBook and an exclusive 20% discount!</p>
-        <form id="emailForm">
-            <input type="text" id="name" placeholder="Enter your name" required>
-            <input type="email" id="email" placeholder="Enter your email" required>
-            <button type="submit">Download Free Guide & Get Discount! 🎶</button>
-        </form>
-        <p class="privacy">We respect your privacy. No spam, unsubscribe anytime.</p>
-    </section>
+   <section class="opt-in" style="max-width: 700px; margin: 50px auto; padding: 2rem; background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 12px; text-align: center; font-family: 'Inter', sans-serif;">
+  <div style="background: #34d399; color: white; font-size: 0.8rem; padding: 0.3rem 0.6rem; border-radius: 5px; display: inline-block; margin-bottom: 0.5rem;">
+    LIMITED TIME OFFER
+  </div>
+  
+  <h2 style="font-size: 2rem; margin-bottom: 1rem;">📥 Get Your Free AI Music Guide &amp; Special Offer</h2>
+  <p style="font-size: 1rem; margin-bottom: 1.5rem;">Enter your details to receive your free eBook and an exclusive 20% discount!</p>
+
+  <form id="emailForm" action="YOUR_FORM_HANDLER_URL" method="POST" data-gtm-form-interact-id="0" style="margin-top: 1rem;">
+    <input 
+      type="text" 
+      id="name" 
+      name="name" 
+      placeholder="Enter your name" 
+      required 
+      data-gtm-form-interact-field-id="0"
+      style="padding: 0.75rem; width: 80%; max-width: 400px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem;"
+    ><br>
+    
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      placeholder="Enter your email" 
+      required 
+      data-gtm-form-interact-field-id="1"
+      style="padding: 0.75rem; width: 80%; max-width: 400px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem;"
+    ><br>
+
+    <button 
+      type="submit" 
+      style="padding: 0.75rem 2rem; font-size: 1rem; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer;"
+    >
+      Download Free Guide &amp; Get Discount! 🎶
+    </button>
+  </form>
+
+  <p class="privacy" style="margin-top: 1.5rem; font-size: 0.9rem; color: #666;">🔒 We respect your privacy. No spam, unsubscribe anytime.</p>
+</section>
+
     
     <section class="benefits">
         <h2>🎼 Why Choose MelodyBox AI?</h2>
