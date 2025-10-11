@@ -1,261 +1,314 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LearnHub - Your Gateway to Knowledge</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>MelodyBox Tech Academy - Learn Tech Skills Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Notification Container -->
-    <div id="notificationContainer"></div>
-
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="container">
-            <div class="nav-container">
-                <div class="logo">
-                    <span style="font-size: 2rem; margin-right: 0.5rem;">🎓</span>
-                    LearnHub
-                </div>
-                <div class="nav-links">
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="#courses" class="nav-link">Courses</a>
-                    <a href="#platforms" class="nav-link">Platforms</a>
-                    <a href="#stats" class="nav-link">Statistics</a>
-                    <div id="userMenu" class="hidden" style="display: flex; align-items: center; gap: 1rem;">
-                        <span style="color: #4b5563;">Welcome, <span id="userName" style="font-weight: 600;"></span></span>
-                        <button onclick="logout()" class="btn" style="background: #ef4444; color: white;">
-                            <span style="margin-right: 0.5rem;">🚪</span>Logout
-                        </button>
-                    </div>
-                    <div id="authButtons" style="display: flex; gap: 0.5rem;">
-                        <button onclick="openLoginModal()" class="btn btn-primary">
-                            <span style="margin-right: 0.5rem;">🔑</span>Login
-                        </button>
-                        <button onclick="openSignupModal()" class="btn btn-secondary">
-                            <span style="margin-right: 0.5rem;">👤</span>Sign Up
-                        </button>
-                    </div>
-                </div>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                MelodyBox Tech Academy
             </div>
-        </div>
-    </nav>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="header-right">
+                <button class="btn btn-outline" id="loginBtn">Login</button>
+                <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+            </div>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero gradient-bg">
+    <section class="hero" id="home">
         <div class="container">
-            <h1>Unlock Your Learning Potential</h1>
-            <p style="max-width: 600px; margin: 0 auto;">Access premium courses from Udemy, Coursera, and other top learning platforms</p>
-            <div class="hero-buttons">
-                <button onclick="scrollToSection('courses')" class="btn" style="background: white; color: #7c3aed; font-size: 1.125rem; padding: 1rem 2rem;">
-                    Explore Courses
-                </button>
-                <button onclick="openSignupModal()" class="btn btn-outline" style="font-size: 1.125rem; padding: 1rem 2rem;">
-                    Start Free Trial
-                </button>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Master In-Demand Tech Skills with Expert-Led Courses</h1>
+                    <p>Join thousands of students learning Data Science, Web Development, and more from industry experts.</p>
+                    <button class="btn btn-primary" id="exploreBtn" style="padding: 0.8rem 2rem; font-size: 1rem;">Explore Courses</button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://picsum.photos/seed/tech123/500/400.jpg" alt="Tech Learning">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section id="stats" class="stats">
+    <!-- Features Section -->
+    <section class="features" id="features">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3 id="totalUsers">-</h3>
-                    <p style="color: #6b7280;">Total Users</p>
+            <div class="section-title">
+                <h2>Why Choose MelodyBox Tech Academy</h2>
+                <p>We bring you the best tech courses with exclusive benefits</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Industry-Relevant Skills</h3>
+                    <p>Learn the latest technologies and frameworks that are in high demand in the job market</p>
                 </div>
-                <div class="stat-card">
-                    <h3 id="totalLogins">-</h3>
-                    <p style="color: #6b7280;">Total Logins</p>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from industry professionals with years of experience in their respective fields</p>
                 </div>
-                <div class="stat-card">
-                    <h3 id="todayLogins">-</h3>
-                    <p style="color: #6b7280;">Today's Logins</p>
-                </div>
-                <div class="stat-card">
-                    <h3 id="siteVisits">-</h3>
-                    <p style="color: #6b7280;">Site Visits</p>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>Certification</h3>
+                    <p>Earn certificates upon completion to showcase your new skills to employers</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Courses Section -->
-    <section id="courses" class="section" style="background: #f9fafb;">
+    <section class="courses" id="courses">
         <div class="container">
-            <div class="section-header">
-                <h2>Popular Courses</h2>
-                <p>Top courses from leading platforms</p>
+            <div class="section-title">
+                <h2>Featured Courses</h2>
+                <p>Hand-picked tech courses to accelerate your career</p>
             </div>
-            <div id="coursesGrid" class="grid grid-3">
-                <!-- Courses will be loaded here -->
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image"><img src="https://picsum.photos/seed/datascience456/400/200.jpg" alt="Data Science Course"></div>
+                    <div class="course-content">
+                        <span class="course-category">Data Science</span>
+                        <h3 class="course-title">Complete Data Science Bootcamp 2023</h3>
+                        <div class="course-instructor">
+                            <img src="https://picsum.photos/seed/instructor1/30/30.jpg" alt="Instructor" class="instructor-avatar">
+                            <span>Dr. Angela Yu</span>
+                        </div>
+                        <div class="course-meta">
+                            <div class="course-rating"><i class="fas fa-star"></i><span>4.7 (25,456)</span></div>
+                            <div class="course-duration"><i class="far fa-clock"></i><span>42 hours</span></div>
+                        </div>
+                        <div class="course-price">
+                            <div><span class="original-price">$199.99</span><span class="price">$14.99</span></div>
+                            <button class="btn btn-primary" onclick="enrollCourse('Complete Data Science Bootcamp 2023')">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image"><img src="https://picsum.photos/seed/webdev789/400/200.jpg" alt="Web Development Course"></div>
+                    <div class="course-content">
+                        <span class="course-category">Web Development</span>
+                        <h3 class="course-title">The Complete Web Developer Course 2023</h3>
+                        <div class="course-instructor">
+                            <img src="https://picsum.photos/seed/instructor2/30/30.jpg" alt="Instructor" class="instructor-avatar">
+                            <span>Rob Percival</span>
+                        </div>
+                        <div class="course-meta">
+                            <div class="course-rating"><i class="fas fa-star"></i><span>4.6 (32,234)</span></div>
+                            <div class="course-duration"><i class="far fa-clock"></i><span>30 hours</span></div>
+                        </div>
+                        <div class="course-price">
+                            <div><span class="original-price">$199.99</span><span class="price">$14.99</span></div>
+                            <button class="btn btn-primary" onclick="enrollCourse('The Complete Web Developer Course 2023')">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image"><img src="https://picsum.photos/seed/javascript321/400/200.jpg" alt="JavaScript Course"></div>
+                    <div class="course-content">
+                        <span class="course-category">JavaScript</span>
+                        <h3 class="course-title">JavaScript: The Complete Guide 2023</h3>
+                        <div class="course-instructor">
+                            <img src="https://picsum.photos/seed/instructor3/30/30.jpg" alt="Instructor" class="instructor-avatar">
+                            <span>Jonas Schmedtmann</span>
+                        </div>
+                        <div class="course-meta">
+                            <div class="course-rating"><i class="fas fa-star"></i><span>4.8 (18,876)</span></div>
+                            <div class="course-duration"><i class="far fa-clock"></i><span>28 hours</span></div>
+                        </div>
+                        <div class="course-price">
+                            <div><span class="original-price">$199.99</span><span class="price">$14.99</span></div>
+                            <button class="btn btn-primary" onclick="enrollCourse('JavaScript: The Complete Guide 2023')">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Platforms Section -->
-    <section id="platforms" class="section">
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
         <div class="container">
-            <div class="section-header">
-                <h2>Learning Platforms</h2>
-                <p>Access courses from our partner platforms</p>
+            <div class="section-title">
+                <h2>What Our Students Say</h2>
+                <p>Join thousands of satisfied tech learners</p>
             </div>
-            <div id="platformsGrid" class="grid grid-4">
-                <!-- Platforms will be loaded here -->
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The Data Science course was comprehensive and practical. I landed a job as a Data Analyst just 2 months after completing it!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://picsum.photos/seed/student1/50/50.jpg" alt="Student" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Alex Johnson</h4>
+                            <p>Data Analyst</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I went from knowing nothing about web development to building full-stack applications. The JavaScript course was a game-changer!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://picsum.photos/seed/student2/50/50.jpg" alt="Student" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Sam Taylor</h4>
+                            <p>Frontend Developer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The HTML, CSS, and JavaScript course gave me the foundation I needed to start my career in tech. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://picsum.photos/seed/student3/50/50.jpg" alt="Student" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Jordan Lee</h4>
+                            <p>Web Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>Start Your Tech Journey Today</h2>
+            <p>Get exclusive access to premium tech courses at unbeatable prices</p>
+            <div class="cta-actions">
+                <form class="email-form" id="newsletterForm">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div style="margin-top:1rem;">
+                    <button class="btn btn-outline" id="downloadPdfBtn" title="Open print dialog to save page as PDF"><i class="fas fa-file-pdf"></i> Download Page as PDF</button>
+                    <button class="btn" id="darkModeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i> Toggle Dark</button>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer>
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-content">
                 <div class="footer-column">
-                    <h3>LearnHub</h3>
-                    <p style="color: #9ca3af;">Your gateway to endless learning opportunities.</p>
+                    <h3>About MelodyBox Tech Academy</h3>
+                    <p>Your gateway to mastering in-demand tech skills through expert-led online courses.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
+
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
                         <li><a href="#courses">Courses</a></li>
-                        <li><a href="#platforms">Platforms</a></li>
-                        <li><a href="#stats">Statistics</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-column">
-                    <h3>Resources</h3>
+                    <h3>Categories</h3>
                     <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Data Science</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">Python</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-column">
-                    <h3>Connect</h3>
-                    <div style="display: flex; gap: 1rem; font-size: 1.5rem;">
-                        <a href="#">📘</a>
-                        <a href="#">🐦</a>
-                        <a href="#">💼</a>
-                        <a href="#">📷</a>
-                    </div>
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 LearnHub. All rights reserved.</p>
+                <p>&copy; 2025 MelodyBox Tech Academy. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="hidden">
-        <div class="modal-backdrop" onclick="closeLoginModal()"></div>
-        <div class="modal">
-            <button onclick="closeLoginModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280;">✖</button>
-            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.875rem; font-weight: 700;">Welcome Back</h2>
-            <form onsubmit="handleLogin(event)">
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Email</label>
-                    <input type="email" id="loginEmail" required class="form-input" placeholder="your@email.com">
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeLoginModal">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
                 </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Password</label>
-                    <input type="password" id="loginPassword" required class="form-input" placeholder="••••••••">
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
-                    Login
-                </button>
+                <button type="submit" class="form-submit">Login</button>
             </form>
-            <div style="text-align: center; margin-top: 1.5rem; color: #6b7280;">
-                <p>Don't have an account? <a href="#" onclick="switchToSignup()" style="color: #7c3aed; text-decoration: none;">Sign up</a></p>
+            <div class="form-switch">
+                <p>Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
             </div>
         </div>
     </div>
 
     <!-- Signup Modal -->
-    <div id="signupModal" class="hidden">
-        <div class="modal-backdrop" onclick="closeSignupModal()"></div>
-        <div class="modal">
-            <button onclick="closeSignupModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280;">✖</button>
-            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.875rem; font-weight: 700;">Create Account</h2>
-            <form onsubmit="handleSignup(event)">
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Full Name</label>
-                    <input type="text" id="signupName" required class="form-input" placeholder="John Doe">
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeSignupModal">&times;</span>
+            <h2>Create Your Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
                 </div>
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Email</label>
-                    <input type="email" id="signupEmail" required class="form-input" placeholder="your@email.com">
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
                 </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Password</label>
-                    <input type="password" id="signupPassword" required class="form-input" placeholder="••••••••">
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
                 </div>
-                <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 1rem;">
-                    Sign Up
-                </button>
+                <button type="submit" class="form-submit">Sign Up</button>
             </form>
-            <div style="text-align: center; margin-top: 1.5rem; color: #6b7280;">
-                <p>Already have an account? <a href="#" onclick="switchToLogin()" style="color: #7c3aed; text-decoration: none;">Login</a></p>
+            <div class="form-switch">
+                <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
             </div>
         </div>
     </div>
 
-    <!-- Google Sheets Configuration Modal -->
-    <div id="configModal" class="hidden">
-        <div class="modal-backdrop" onclick="closeConfigModal()"></div>
-        <div class="modal">
-            <button onclick="closeConfigModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280;">✖</button>
-            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.875rem; font-weight: 700;">Google Sheets Setup</h2>
-            <div style="margin-bottom: 1.5rem;">
-                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Google Apps Script URL</label>
-                <input type="text" id="scriptUrlInput" class="form-input" placeholder="https://script.google.com/macros/s/...">
-            </div>
-            <button onclick="saveScriptUrl()" class="btn btn-primary" style="width: 100%; padding: 1rem;">
-                Save Configuration
-            </button>
-            <div style="text-align: center; margin-top: 1rem; color: #6b7280;">
-                <p><a href="#" onclick="showSetupGuide()" style="color: #7c3aed; text-decoration: none;">Need help? View Setup Guide</a></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Setup Guide Modal -->
-    <div id="setupGuideModal" class="hidden">
-        <div class="modal-backdrop" onclick="closeSetupGuideModal()"></div>
-        <div class="modal" style="max-width: 600px; max-height: 90vh; overflow-y: auto;">
-            <button onclick="closeSetupGuideModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280;">✖</button>
-            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.875rem; font-weight: 700;">Two-Sheet Setup Guide</h2>
-            <div style="margin-bottom: 1.5rem;">
-                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">1. Create Two Google Sheets</h3>
-                <p style="color: #6b7280; margin-bottom: 1rem;">
-                    <strong>Sheet 1: "UserData"</strong> - Columns: Name, Email, Password, JoinTime<br>
-                    <strong>Sheet 2: "LoginActivity"</strong> - Columns: Email, LoginTime, IP Address
-                </p>
-                
-                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">2. Create Apps Script</h3>
-                <p style="color: #6b7280; margin-bottom: 1rem;">Go to script.google.com and paste the provided code with both sheet IDs</p>
-                
-                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">3. Deploy Web App</h3>
-                <p style="color: #6b7280; margin-bottom: 1rem;">Deploy as Web app and copy the URL</p>
-                
-                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">4. Configure Website</h3>
-                <p style="color: #6b7280;">Paste the URL in the configuration modal</p>
-            </div>
-            <button onclick="closeSetupGuideModal()" class="btn btn-primary" style="width: 100%; padding: 1rem;">
-                Got it!
-            </button>
-        </div>
-    </div>
-
-    <!-- Configuration Button -->
-    <div style="position: fixed; bottom: 1rem; right: 1rem; z-index: 20;">
-        <button onclick="openConfigModal()" class="btn" style="background: #7c3aed; color: white; border-radius: 50%; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-            ⚙️
-        </button>
-    </div>
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
 
     <script src="script.js"></script>
 </body>
