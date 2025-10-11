@@ -2,337 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
-    <title>MelodyBox AI - Revolutionize Your Music Creation</title>
-    <meta name="description" content="Generate AI-powered music instantly with MelodyBox AI. No skills needed! Start for free and create professional tracks now.">
-    <meta name="keywords" content="AI Music Generator, Create Music Online, AI Beats, MelodyBox AI, Music for Creators">
-    <meta name="author" content="MelodyBox AI">
-    <meta property="og:title" content="MelodyBox AI - AI-Powered Music Generator">
-    <meta property="og:description" content="Create AI-generated music effortlessly. Perfect for content creators and musicians. Get started for free!">
-    <meta property="og:image" content="logo.png">
-    <meta property="og:url" content="https://melodyboxai.shop">
-     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
-  
-     
+    <title>LearnHub - Your Gateway to Knowledge</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-    <script src="script.js"></script>   
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CNDTBPLGT6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-CNDTBPLGT6');
-</script>
-
-
 <body>
-    <header>
-        <h1>🎵 Create Music Instantly with AI - No Experience Needed!</h1>
-      
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
 
-
-        
-    </header>
-    
-   <section class="opt-in" style="max-width: 700px; margin: 50px auto; padding: 2rem; background: linear-gradient(90deg, #9f0cff, #0055ff); box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 12px; text-align: center; font-family: 'Inter', sans-serif;">
-  <div style="background: #34d399; color: white; font-size: 0.8rem; padding: 0.3rem 0.6rem; border-radius: 5px; display: inline-block; margin-bottom: 0.5rem;">
-    LIMITED TIME OFFER
-  </div>
-  
-  <h2 style="font-size: 2rem; margin-bottom: 1rem;">📥 Get Your Free AI Music Guide &amp; Special Offer</h2>
-  <p style="font-size: 1rem; margin-bottom: 1.5rem;">Enter your details to receive your free eBook and free Ai tools!</p>
-
-  <form id="emailForm" action="YOUR_FORM_HANDLER_URL" method="POST" data-gtm-form-interact-id="0" style="margin-top: 1rem;">
-    <input 
-      type="text" 
-      id="name" 
-      name="name" 
-      placeholder="Enter your name" 
-      required 
-      data-gtm-form-interact-field-id="0"
-      style="padding: 0.75rem; width: 80%; max-width: 400px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem;"
-    ><br>
-    
-    <input 
-      type="email" 
-      id="email" 
-      name="email" 
-      placeholder="Enter your email" 
-      required 
-      data-gtm-form-interact-field-id="1"
-      style="padding: 0.75rem; width: 80%; max-width: 400px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem;"
-    ><br>
-
-    <button 
-      type="submit" 
-      style="padding: 0.75rem 2rem; font-size: 1rem; background: #3b82f6; color: white; border: none; border-radius: 8px; cursor: pointer;"
-    >
-      Download Free Guide &amp; Get Discount! 🎶
-    </button>
-  </form>
-
-  <p class="privacy" style="margin-top: 1.5rem; font-size: 0.9rem; color: #666;">🔒 We respect your privacy. No spam, unsubscribe anytime.</p>
-</section>
-
-    
-   
-    
-   
-    
-
-     
-
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <span style="font-size: 2rem; margin-right: 0.5rem;">🎓</span>
+                    LearnHub
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#courses" class="nav-link">Courses</a>
+                    <a href="#platforms" class="nav-link">Platforms</a>
+                    <a href="#stats" class="nav-link">Statistics</a>
+                    <div id="userMenu" class="hidden" style="display: flex; align-items: center; gap: 1rem;">
+                        <span style="color: #4b5563;">Welcome, <span id="userName" style="font-weight: 600;"></span></span>
+                        <button onclick="logout()" class="btn" style="background: #ef4444; color: white;">
+                            <span style="margin-right: 0.5rem;">🚪</span>Logout
+                        </button>
+                    </div>
+                    <div id="authButtons" style="display: flex; gap: 0.5rem;">
+                        <button onclick="openLoginModal()" class="btn btn-primary">
+                            <span style="margin-right: 0.5rem;">🔑</span>Login
+                        </button>
+                        <button onclick="openSignupModal()" class="btn btn-secondary">
+                            <span style="margin-right: 0.5rem;">👤</span>Sign Up
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero gradient-bg">
         <div class="container">
-            <div class="hero-content">
-                <div class="badge">LIMITED TIME OFFER</div>
-                <h1 class="main-title">Unlock Professional AI Music Creation in Seconds!</h1>
-                <p class="subtitle">Create Studio-Quality Tracks, Voiceovers & Background Music - ZERO Experience Needed!</p>
-                <p class="revenue">MelodyBox AI Generated <span class="highlight">$853,492</span> in Revenue for Creators Last Month!</p>
-                
-                <div class="cta-container">
-                    <a href="https://getmelodyboxai.com/live" class="cta-button">GET INSTANT ACCESS NOW!</a>
-                    <div class="discount">97% DISCOUNT - ONLY <span class="price">$47</span> (REG. $9,970)</div>
-                    <div class="timer-container">
-                        <div>OFFER ENDS IN:</div>
-                        <div id="countdown" class="countdown">24:00:00</div>
-                    </div>
-                </div>
-                
-                <div class="guarantee">
-                    <img src="images/shield.png" alt="Guarantee">
-                    <span>30-Day "Zero-Risk" Guarantee</span>
-                </div>
+            <h1>Unlock Your Learning Potential</h1>
+            <p style="max-width: 600px; margin: 0 auto;">Access premium courses from Udemy, Coursera, and other top learning platforms</p>
+            <div class="hero-buttons">
+                <button onclick="scrollToSection('courses')" class="btn" style="background: white; color: #7c3aed; font-size: 1.125rem; padding: 1rem 2rem;">
+                    Explore Courses
+                </button>
+                <button onclick="openSignupModal()" class="btn btn-outline" style="font-size: 1.125rem; padding: 1rem 2rem;">
+                    Start Free Trial
+                </button>
             </div>
-            
-            <div class="hero-image">
-                <div class="product-mockup">
-                    <div class="screen">
-                        <div class="app-interface">
-                            <div class="wave"></div>
-                            <div class="wave"></div>
-                            <div class="wave"></div>
-                        </div>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="totalUsers">-</h3>
+                    <p style="color: #6b7280;">Total Users</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalLogins">-</h3>
+                    <p style="color: #6b7280;">Total Logins</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="todayLogins">-</h3>
+                    <p style="color: #6b7280;">Today's Logins</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="siteVisits">-</h3>
+                    <p style="color: #6b7280;">Site Visits</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem/Solution Section -->
-    <section class="problem-solution">
+    <!-- Courses Section -->
+    <section id="courses" class="section" style="background: #f9fafb;">
         <div class="container">
             <div class="section-header">
-                <h2>Tired of Paying Fortune for Music Production?</h2>
-                <p>MelodyBox AI Solves Everything That's Wrong With Traditional Music Creation</p>
+                <h2>Popular Courses</h2>
+                <p>Top courses from leading platforms</p>
             </div>
-            
-            <div class="problems">
-                <div class="problem-card">
-                    <div class="icon">💸</div>
-                    <h3>$997 Studio Fees</h3>
-                    <p>Stop paying hourly rates for professional music production</p>
-                </div>
-                <div class="problem-card">
-                    <div class="icon">⏱️</div>
-                    <h3>Weeks of Production</h3>
-                    <p>No more waiting weeks for a single track to be completed</p>
-                </div>
-                <div class="problem-card">
-                    <div class="icon">🎓</div>
-                    <h3>Years of Learning</h3>
-                    <p>Skip the steep learning curve of complex music software</p>
-                </div>
-            </div>
-            
-            <div class="solution">
-                <div class="solution-content">
-                    <h3>MelodyBox AI Changes Everything</h3>
-                    <p>With just a few clicks, you can generate:</p>
-                    <ul>
-                        <li>Professional-quality songs in any genre</li>
-                        <li>Studio-grade voiceovers for videos</li>
-                        <li>Custom background music for any project</li>
-                        <li>Mobile-ready tracks on the go</li>
-                    </ul>
-                    <p class="solution-highlight">AI has democratized music creation - it's put everything in YOUR hands!</p>
-                    <a href="https://getmelodyboxai.com/live" class="cta-button">START CREATING NOW</a>
-                </div>
+            <div id="coursesGrid" class="grid grid-3">
+                <!-- Courses will be loaded here -->
             </div>
         </div>
     </section>
 
-    <!-- Value Stack Section -->
-    <section class="value-stack">
+    <!-- Platforms Section -->
+    <section id="platforms" class="section">
         <div class="container">
             <div class="section-header">
-                <h2>What You Get Today (Worth $9,970)</h2>
-                <p>The Complete AI Music Creation Suite + Exclusive Bonuses</p>
+                <h2>Learning Platforms</h2>
+                <p>Access courses from our partner platforms</p>
             </div>
-            
-            <div class="value-grid">
-                <div class="value-item">
-                    <div class="value-header">
-                        <h3>MelodyBox AI Suite</h3>
-                        <span class="value-price">$9,970 Value</span>
-                    </div>
-                    <ul>
-                        <li>AI Song Generator</li>
-                        <li>Professional Voiceovers</li>
-                        <li>Background Music Engine</li>
-                        <li>Mobile Edition</li>
-                        <li>Training Library</li>
-                    </ul>
-                </div>
-                
-                <div class="bonuses">
-                    <h3>Exclusive Bonuses (Worth $2,985)</h3>
-                    <div class="bonus-grid">
-                        <div class="bonus-item">
-                            <div class="bonus-icon">🎬</div>
-                            <div>
-                                <h4>Viddx AI</h4>
-                                <p>Video creation tool</p>
-                                <span class="bonus-value">$397 Value</span>
-                            </div>
-                        </div>
-                        <div class="bonus-item">
-                            <div class="bonus-icon">🤖</div>
-                            <div>
-                                <h4>AI Worker</h4>
-                                <p>Automate tasks</p>
-                                <span class="bonus-value">$397 Value</span>
-                            </div>
-                        </div>
-                        <div class="bonus-item">
-                            <div class="bonus-icon">🧠</div>
-                            <div>
-                                <h4>Flexi AI</h4>
-                                <p>Flexible AI tool</p>
-                                <span class="bonus-value">$297 Value</span>
-                            </div>
-                        </div>
-                        <div class="bonus-item">
-                            <div class="bonus-icon">🌐</div>
-                            <div>
-                                <h4>Webfit AI</h4>
-                                <p>Website optimization</p>
-                                <span class="bonus-value">$997 Value</span>
-                            </div>
-                        </div>
-                        <div class="bonus-item">
-                            <div class="bonus-icon">📧</div>
-                            <div>
-                                <h4>Email Marketing Cheat Sheet</h4>
-                                <p>Proven email strategies</p>
-                                <span class="bonus-value">$597 Value</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>Real Results from Real Users</h2>
-                <p>Join Thousands of Creators Who've Transformed Their Music Production</p>
-            </div>
-            
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Made $4,352 my first month selling AI-generated jingles! This tool paid for itself in 3 days."</p>
-                    <p>"Finally, I can create background tracks for my videos without paying expensive studios."
-— Sarah K., Content Creator</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">M</div>
-                        <div>
-                            <h4>Mark T.</h4>
-                            <p>Freelancer</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                   <p>"Finally, I can create background tracks for my videos without paying expensive studios."
-                   </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">S</div>
-                        <div>
-                            <h4>Sarah K</h4>
-                            <p>Content Creator</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Cut my production costs by 90%! I used to spend $1,000/month on music, now I create everything myself."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">S</div>
-                        <div>
-                            <h4>Sarah L.</h4>
-                            <p>Podcaster</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"As a complete beginner, I created a full album in 2 weeks. MelodyBox AI is a game-changer!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">J</div>
-                        <div>
-                            <h4>James R.</h4>
-                            <p>Music Producer</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="final-cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Revolutionize Your Music Creation?</h2>
-                <p>Join 50,000+ creators who are already using MelodyBox AI to produce professional music</p>
-                
-                <div class="pricing-box">
-                    <div class="original-price">Original Price: $9,970</div>
-                    <div class="current-price">Today Only: <span class="price">$47</span></div>
-                    <div class="savings">You Save: $9,923 (97% OFF)</div>
-                </div>
-                
-                <a href="https://getmelodyboxai.com/live" class="cta-button large">YES! GIVE ME INSTANT ACCESS NOW!</a>
-                
-                <div class="security-info">
-                    <img src="images/lock.png" alt="Secure">
-                    <span>Secure checkout via WarriorPlus - Instant access even at 2 AM!</span>
-                </div>
-                
-                <div class="guarantee-box">
-                    <div class="guarantee-icon">🛡️</div>
-                    <div>
-                        <h3>30-Day "Zero-Risk" Guarantee</h3>
-                        <p>If you don't create professional tracks in 5 minutes, we'll refund every penny!</p>
-                    </div>
-                </div>
+            <div id="platformsGrid" class="grid grid-4">
+                <!-- Platforms will be loaded here -->
             </div>
         </div>
     </section>
@@ -340,39 +111,152 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="disclaimer">
-                <h4>Disclaimer</h4>
-                <p>WarriorPlus is used to help manage the sale of products on this site. While WarriorPlus helps facilitate the sale, all payments are made directly to the product vendor and NOT WarriorPlus. Thus, all product questions, support inquiries and/or refund requests must be sent to the vendor. WarriorPlus's role should not be construed as an endorsement, approval or review of these products or any claim, statement or opinion used in the marketing of these products.</p>
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>LearnHub</h3>
+                    <p style="color: #9ca3af;">Your gateway to endless learning opportunities.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#platforms">Platforms</a></li>
+                        <li><a href="#stats">Statistics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <div style="display: flex; gap: 1rem; font-size: 1.5rem;">
+                        <a href="#">📘</a>
+                        <a href="#">🐦</a>
+                        <a href="#">💼</a>
+                        <a href="#">📷</a>
+                    </div>
+                </div>
             </div>
-            
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Contact Support</a>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 MelodyBox AI. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LearnHub. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Login Modal -->
+    <div id="loginModal" class="hidden">
+        <div class="modal-backdrop" onclick="closeLoginModal()"></div>
+        <div class="modal">
+            <button onclick="closeLoginModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280;">✖</button>
+            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.875rem; font-weight: 700;">Welcome Back</h2>
+            <form onsubmit="handleLogin(event)">
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Email</label>
+                    <input type="email" id="loginEmail" required class="form-input" placeholder="your@email.com">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Password</label>
+                    <input type="password" id="loginPassword" required class="form-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                    Login
+                </button>
+            </form>
+            <div style="text-align: center; margin-top: 1.5rem; color: #6b7280;">
+                <p>Don't have an account? <a href="#" onclick="switchToSignup()" style="color: #7c3aed; text-decoration: none;">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="hidden">
+        <div class="modal-backdrop" onclick="closeSignupModal()"></div>
+        <div class="modal">
+            <button onclick="closeSignupModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280;">✖</button>
+            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.875rem; font-weight: 700;">Create Account</h2>
+            <form onsubmit="handleSignup(event)">
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Full Name</label>
+                    <input type="text" id="signupName" required class="form-input" placeholder="John Doe">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Email</label>
+                    <input type="email" id="signupEmail" required class="form-input" placeholder="your@email.com">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Password</label>
+                    <input type="password" id="signupPassword" required class="form-input" placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-secondary" style="width: 100%; padding: 1rem;">
+                    Sign Up
+                </button>
+            </form>
+            <div style="text-align: center; margin-top: 1.5rem; color: #6b7280;">
+                <p>Already have an account? <a href="#" onclick="switchToLogin()" style="color: #7c3aed; text-decoration: none;">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Google Sheets Configuration Modal -->
+    <div id="configModal" class="hidden">
+        <div class="modal-backdrop" onclick="closeConfigModal()"></div>
+        <div class="modal">
+            <button onclick="closeConfigModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280;">✖</button>
+            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.875rem; font-weight: 700;">Google Sheets Setup</h2>
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600; color: #374151;">Google Apps Script URL</label>
+                <input type="text" id="scriptUrlInput" class="form-input" placeholder="https://script.google.com/macros/s/...">
+            </div>
+            <button onclick="saveScriptUrl()" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                Save Configuration
+            </button>
+            <div style="text-align: center; margin-top: 1rem; color: #6b7280;">
+                <p><a href="#" onclick="showSetupGuide()" style="color: #7c3aed; text-decoration: none;">Need help? View Setup Guide</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Setup Guide Modal -->
+    <div id="setupGuideModal" class="hidden">
+        <div class="modal-backdrop" onclick="closeSetupGuideModal()"></div>
+        <div class="modal" style="max-width: 600px; max-height: 90vh; overflow-y: auto;">
+            <button onclick="closeSetupGuideModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #6b7280;">✖</button>
+            <h2 style="text-align: center; margin-bottom: 1.5rem; font-size: 1.875rem; font-weight: 700;">Two-Sheet Setup Guide</h2>
+            <div style="margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">1. Create Two Google Sheets</h3>
+                <p style="color: #6b7280; margin-bottom: 1rem;">
+                    <strong>Sheet 1: "UserData"</strong> - Columns: Name, Email, Password, JoinTime<br>
+                    <strong>Sheet 2: "LoginActivity"</strong> - Columns: Email, LoginTime, IP Address
+                </p>
+                
+                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">2. Create Apps Script</h3>
+                <p style="color: #6b7280; margin-bottom: 1rem;">Go to script.google.com and paste the provided code with both sheet IDs</p>
+                
+                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">3. Deploy Web App</h3>
+                <p style="color: #6b7280; margin-bottom: 1rem;">Deploy as Web app and copy the URL</p>
+                
+                <h3 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">4. Configure Website</h3>
+                <p style="color: #6b7280;">Paste the URL in the configuration modal</p>
+            </div>
+            <button onclick="closeSetupGuideModal()" class="btn btn-primary" style="width: 100%; padding: 1rem;">
+                Got it!
+            </button>
+        </div>
+    </div>
+
+    <!-- Configuration Button -->
+    <div style="position: fixed; bottom: 1rem; right: 1rem; z-index: 20;">
+        <button onclick="openConfigModal()" class="btn" style="background: #7c3aed; color: white; border-radius: 50%; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+            ⚙️
+        </button>
+    </div>
+
     <script src="script.js"></script>
-
-    </section>
-    
-    <footer>
-        <p>© 2025 MelodyBox AI | <a href="#">Privacy Policy</a> | <a href="#">Disclaimer</a></p>
-        <p><a href="#" id="footerAffiliate">Affiliate Offer - Get MelodyBox AI Now</a></p>
-    </footer>
-
-  <link rel="stylesheet" href="style.css">
 </body>
 </html>
-
-
-
-
-
-
-
