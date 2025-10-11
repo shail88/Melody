@@ -33,12 +33,16 @@ function showNotification(msg,type='success'){
 // === USER SESSION (local cache only) ===
 function setCurrentUser(u){ localStorage.setItem('mb_current',JSON.stringify(u)); }
 function getCurrentUser(){ const raw=localStorage.getItem('mb_current'); return raw?JSON.parse(raw):null; }
-function logoutUser(){ localStorage.removeItem('mb_current'); showNotification('Logged out successfully!'); updateHeader(); }
+function logoutUser(){ 
+  localStorage.removeItem('mb_current'); 
+  showNotification('Logged out successfully!'); 
+  updateHeader(); 
+}
 
 function updateHeader(){
   const user=getCurrentUser();
   if(user){
-    headerRight.innerHTML=`<span>👋 Welcome, <strong>${user.name}</strong></span>
+    headerRight.innerHTML=`<span>👋 Welcome, <strong>${user.name||user.email}</strong></span>
       <button id="logoutBtn" class="btn btn-outline">Logout</button>`;
     document.getElementById('logoutBtn').addEventListener('click',logoutUser);
   }else{
@@ -63,16 +67,14 @@ document.getElementById('signupForm').addEventListener('submit',async e=>{
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({action:'signup',name,email,password})
     });
-    const text=await res.text();
-    if(text.includes('User signed up')){
-      showNotification('Signup successful! 🎉','success');
+    const data=await res.json();
+    if(data.success){
+      showNotification(data.message,'success');
       setCurrentUser({name,email});
       closeModal(signupModal);
       updateHeader();
-    }else if(text.includes('exists')){
-      showNotification('Email already registered.','error');
     }else{
-      showNotification(text,'error');
+      showNotification(data.message,'error');
     }
   }catch(err){ showNotification('Network error during signup','error'); }
 });
@@ -90,14 +92,14 @@ document.getElementById('loginForm').addEventListener('submit',async e=>{
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({action:'login',email,password,ipAddress})
     });
-    const text=await res.text();
-    if(text.includes('Login success')){
-      setCurrentUser({email});
-      showNotification('Welcome back!','success');
+    const data=await res.json();
+    if(data.success){
+      setCurrentUser({email,name:data.name||email});
+      showNotification(data.message||'Welcome back!','success');
       closeModal(loginModal);
       updateHeader();
     }else{
-      showNotification('Invalid credentials','error');
+      showNotification(data.message||'Invalid credentials','error');
     }
   }catch(err){ showNotification('Network error during login','error'); }
 });
@@ -107,7 +109,7 @@ async function fetchStats(){
   try{
     const res=await fetch(GOOGLE_SCRIPT_URL);
     const data=await res.json();
-    if(data.dashboard){
+    if(data.success && data.dashboard){
       document.getElementById('totalUsers').textContent=data.dashboard.totalUsers||0;
       document.getElementById('totalLogins').textContent=data.dashboard.totalLogins||0;
       document.getElementById('uniqueUsers').textContent=data.dashboard['Unique Users']||0;
