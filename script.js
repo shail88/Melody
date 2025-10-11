@@ -1,7 +1,7 @@
 // ===== MelodyBox – Google Sheets Connected Version =====
 
 // === CONFIG ===
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFU0QHaT7bcv2Vxl14gsVOlpemtptISYsho8WuVgdTB4DZqvkWHli4WihD8koDc7aBOQ/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz9Twkndq1IuhCMtAPq4Va_qLqNOdYt4cdmHJe7Os19y2Viy8R4wqcosVQ6sLAHzbS6RQ/exec";
 
 // === UI ELEMENTS ===
 const loginModal = document.getElementById('loginModal');
@@ -359,3 +359,4 @@ if (closeSignupModal) {
   
   console.log('MelodyBox initialized successfully');
 })();
+
