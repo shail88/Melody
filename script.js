@@ -1,82 +1,289 @@
+// ========================
+// Global State
+// ========================
+let currentUser = null;
+let scriptUrl = localStorage.getItem('scriptUrl') || 'https://script.google.com/macros/s/AKfycbzGQAA0wpzp4o5MuxGDJeQQKoStf10wjGwCs8ySxd_HsXl6Dt2ILFjWavhaUpasTibX5A/exec';
 
-document.addEventListener("DOMContentLoaded", function() {
-  const emailForm = document.getElementById("emailForm");
+// ========================
+// Sample Data
+// ========================
+const courses = [
+  { id: 1, title: "Web Development Bootcamp", platform: "Udemy", price: 89.99, rating: 4.8, students: 12500, image: "https://picsum.photos/seed/webdev/400/250", link: "https://www.udemy.com/course/web-development-bootcamp/" },
+  { id: 2, title: "Machine Learning A-Z", platform: "Coursera", price: 129.99, rating: 4.9, students: 8900, image: "https://picsum.photos/seed/ml/400/250", link: "https://www.coursera.org/learn/machine-learning" },
+  { id: 3, title: "Digital Marketing Mastery", platform: "Udemy", price: 79.99, rating: 4.7, students: 15600, image: "https://picsum.photos/seed/marketing/400/250", link: "https://www.udemy.com/course/digital-marketing-mastery/" },
+  { id: 4, title: "Data Science Fundamentals", platform: "edX", price: 99.99, rating: 4.8, students: 10200, image: "https://picsum.photos/seed/datascience/400/250", link: "https://www.edx.org/learn/data-science" },
+  { id: 5, title: "UI/UX Design Principles", platform: "Udemy", price: 69.99, rating: 4.6, students: 7800, image: "https://picsum.photos/seed/uiux/400/250", link: "https://www.udemy.com/course/ui-ux-design-principles/" },
+  { id: 6, title: "Blockchain Development", platform: "Coursera", price: 149.99, rating: 4.9, students: 5600, image: "https://picsum.photos/seed/blockchain/400/250", link: "https://www.coursera.org/learn/blockchain-basics" }
+];
 
-  emailForm.addEventListener("submit", function(event) {
-    event.preventDefault();
+const platforms = [
+  { name: "Udemy", icon: "🎓", description: "50,000+ courses", link: "https://www.udemy.com" },
+  { name: "Coursera", icon: "🎯", description: "University courses", link: "https://www.coursera.org" },
+  { name: "edX", icon: "📚", description: "Top university programs", link: "https://www.edx.org" },
+  { name: "Skillshare", icon: "🎨", description: "Creative skills", link: "https://www.skillshare.com" },
+  { name: "LinkedIn Learning", icon: "💼", description: "Professional development", link: "https://www.linkedin.com/learning" },
+  { name: "Pluralsight", icon: "🔧", description: "Technology courses", link: "https://www.pluralsight.com" },
+  { name: "Khan Academy", icon: "📖", description: "Free education", link: "https://www.khanacademy.org" },
+  { name: "Codecademy", icon: "💻", description: "Learn to code", link: "https://www.codecademy.com" }
+];
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-
-    fetch('https://script.google.com/macros/s/AKfycbwKl6Ts0loAVN9jFc9XYJlnGPp5_8GyS5FIMKR2cQMGncNwKBSMgUcPqalDefBid0Bj/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name: name, email: email })
-    })
-    .then(() => {
-      console.log('Request sent successfully!');
-      alert("Thank you! Your Ebook has been sent.");
-      // ✅ Clear the inputs
-      document.getElementById("name").value = '';
-      document.getElementById("email").value = '';
-    })
-    .catch(error => {
-      console.error(error);
-      alert("Error submitting data.");
-    });
-  });
+// ========================
+// Page Initialization
+// ========================
+document.addEventListener('DOMContentLoaded', () => {
+  loadCourses();
+  loadPlatforms();
+  loadStats();
+  trackSiteVisit();
+  checkAuthStatus();
+  syncWithGoogleSheets();
 });
-// Countdown Timer
-function startCountdown(duration, display) {
-    let timer = duration, hours, minutes, seconds;
-    
-    setInterval(function () {
-        hours = parseInt(timer / 3600, 10);
-        minutes = parseInt((timer % 3600) / 60, 10);
-        seconds = parseInt(timer % 60, 10);
-        
-        hours = hours < 10 ? "0" + hours : hours;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-        
-        display.textContent = hours + ":" + minutes + ":" + seconds;
-        
-        if (--timer < 0) {
-            timer = 0;
-            // Redirect or show offer expired message
-            display.textContent = "EXPIRED";
-        }
-    }, 1000);
+
+// ========================
+// Visit Tracking
+// ========================
+function trackSiteVisit() {
+  let visits = parseInt(localStorage.getItem('siteVisits') || '0') + 1;
+  localStorage.setItem('siteVisits', visits);
+  document.getElementById('siteVisits').textContent = visits;
 }
 
-window.onload = function () {
-    const countdownDuration = 24 * 60 * 60; // 24 hours in seconds
-    const display = document.querySelector('#countdown');
-    startCountdown(countdownDuration, display);
-};
+// ========================
+// Load Statistics
+// ========================
+async function loadStats() {
+  let siteVisits = parseInt(localStorage.getItem('siteVisits') || '0');
+  document.getElementById('siteVisits').textContent = siteVisits;
 
-// Add animation on scroll
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
+  if (!scriptUrl) return;
 
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
+  try {
+    const response = await callGoogleSheetsAPI('getStats');
+    if (response.status === 'success' && response.stats) {
+      document.getElementById('totalUsers').textContent = response.stats.totalUsers || 0;
+      document.getElementById('totalLogins').textContent = response.stats.totalLogins || 0;
+      document.getElementById('todayLogins').textContent = response.stats.todayLogins || 0;
+    }
+  } catch (error) {
+    console.warn('Stats not available:', error.message);
+  }
+}
 
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
+// ========================
+// Google Sheets Sync
+// ========================
+async function syncWithGoogleSheets() {
+  if (!scriptUrl) return;
+
+  try {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    for (const user of users) {
+      try {
+        await callGoogleSheetsAPI('signup', user);
+      } catch {
+        console.log(`User already exists in Google Sheets: ${user.email}`);
+      }
+    }
+  } catch (error) {
+    console.error('Sync error:', error);
+  }
+}
+
+// ========================
+// Google Sheets API
+// ========================
+function callGoogleSheetsAPI(action, params = {}) {
+  return new Promise((resolve, reject) => {
+    if (!scriptUrl) return reject(new Error('Script URL not configured'));
+
+    const url = new URL(scriptUrl);
+    url.searchParams.append('action', action);
+    Object.entries(params).forEach(([k, v]) => url.searchParams.append(k, v));
+
+    fetch(url)
+      .then(r => r.json())
+      .then(d => d.status === 'success' ? resolve(d) : reject(new Error(d.message || 'API Error')))
+      .catch(reject);
+  });
+}
+
+// ========================
+// Authentication
+// ========================
+async function checkAuthStatus() {
+  const saved = localStorage.getItem('currentUser');
+  if (saved) {
+    currentUser = JSON.parse(saved);
+    updateUIForLoggedInUser();
+  }
+}
+
+function updateUIForLoggedInUser() {
+  document.getElementById('authButtons').style.display = 'none';
+  document.getElementById('userMenu').style.display = 'flex';
+  document.getElementById('userName').textContent = currentUser.name;
+}
+
+function updateUIForLoggedOutUser() {
+  document.getElementById('authButtons').style.display = 'flex';
+  document.getElementById('userMenu').style.display = 'none';
+}
+
+// ========================
+// Login
+// ========================
+async function handleLogin(e) {
+  e.preventDefault();
+  const email = loginEmail.value;
+  const password = loginPassword.value;
+  const users = JSON.parse(localStorage.getItem('users') || '[]');
+  const user = users.find(u => u.email === email && u.password === password);
+
+  if (!user) return showNotification('Invalid email or password', 'error');
+
+  user.lastLogin = new Date().toISOString();
+  localStorage.setItem('users', JSON.stringify(users));
+  currentUser = { name: user.name, email: user.email };
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  updateUIForLoggedInUser();
+  closeLoginModal();
+  showNotification('Login successful!', 'success');
+  loadStats();
+
+  if (scriptUrl) {
+    try {
+      await callGoogleSheetsAPI('login', { email, password });
+    } catch (err) {
+      console.warn('Login sync failed:', err.message);
+    }
+  }
+}
+
+// ========================
+// Signup
+// ========================
+async function handleSignup(e) {
+  e.preventDefault();
+  const name = signupName.value;
+  const email = signupEmail.value;
+  const password = signupPassword.value;
+  const users = JSON.parse(localStorage.getItem('users') || '[]');
+
+  if (users.some(u => u.email === email))
+    return showNotification('Email already exists', 'error');
+
+  const newUser = { id: Date.now(), name, email, password, joinTime: new Date().toISOString(), lastLogin: new Date().toISOString() };
+  users.push(newUser);
+  localStorage.setItem('users', JSON.stringify(users));
+
+  currentUser = { name, email };
+  localStorage.setItem('currentUser', JSON.stringify(currentUser));
+  updateUIForLoggedInUser();
+  closeSignupModal();
+  showNotification('Signup successful!', 'success');
+  loadStats();
+
+  if (scriptUrl) {
+    try {
+      await callGoogleSheetsAPI('signup', newUser);
+    } catch (err) {
+      console.warn('Signup sync failed:', err.message);
+    }
+  }
+}
+
+function logout() {
+  currentUser = null;
+  localStorage.removeItem('currentUser');
+  updateUIForLoggedOutUser();
+  showNotification('Logged out successfully', 'info');
+}
+
+// ========================
+// Modals & Config
+// ========================
+function openLoginModal() { loginModal.classList.remove('hidden'); }
+function closeLoginModal() { loginModal.classList.add('hidden'); }
+function openSignupModal() { signupModal.classList.remove('hidden'); }
+function closeSignupModal() { signupModal.classList.add('hidden'); }
+
+function openConfigModal() {
+  configModal.classList.remove('hidden');
+  scriptUrlInput.value = scriptUrl;
+}
+function closeConfigModal() { configModal.classList.add('hidden'); }
+
+function saveScriptUrl() {
+  const url = scriptUrlInput.value.trim();
+  if (!url) return showNotification('Please enter a valid URL', 'error');
+  localStorage.setItem('scriptUrl', url);
+  scriptUrl = url;
+  closeConfigModal();
+  showNotification('Configuration saved!', 'success');
+  loadStats();
+}
+
+// ========================
+// Courses & Platforms
+// ========================
+function loadCourses() {
+  coursesGrid.innerHTML = courses.map(c => `
+    <div class="card card-hover">
+      <img src="${c.image}" alt="${c.title}">
+      <div class="card-content">
+        <div style="display:flex;justify-content:space-between;margin-bottom:.5rem;">
+          <span style="font-size:.75rem;background:#ede9fe;color:#7c3aed;padding:.25rem .5rem;border-radius:9999px;">${c.platform}</span>
+          <span style="color:#f59e0b;">⭐ ${c.rating}</span>
+        </div>
+        <h3 class="card-title">${c.title}</h3>
+        <p>${c.students.toLocaleString()} students enrolled</p>
+        <div class="card-footer">
+          <span class="price">$${c.price}</span>
+          <button onclick="openCourse('${c.link}')" class="btn btn-primary">View Course</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function loadPlatforms() {
+  platformsGrid.innerHTML = platforms.map(p => `
+    <div class="platform-card" onclick="openPlatform('${p.link}')">
+      <div class="platform-icon">${p.icon}</div>
+      <h3>${p.name}</h3>
+      <p>${p.description}</p>
+    </div>
+  `).join('');
+}
+
+function openCourse(link) {
+  if (!currentUser) return showNotification('Please login to access courses', 'warning');
+  window.open(link, '_blank');
+}
+function openPlatform(link) {
+  if (!currentUser) return showNotification('Please login to access platforms', 'warning');
+  window.open(link, '_blank');
+}
+
+// ========================
+// Utilities
+// ========================
+function showNotification(msg, type = 'info') {
+  const container = document.getElementById('notificationContainer');
+  const div = document.createElement('div');
+  const colors = { success: '#10b981', warning: '#f59e0b', error: '#ef4444', info: '#3b82f6' };
+  const icons = { success: '✅', warning: '⚠️', error: '❌', info: 'ℹ️' };
+
+  div.className = 'notification';
+  div.style.background = colors[type];
+  div.innerHTML = `<span>${icons[type]}</span> ${msg}`;
+  container.appendChild(div);
+  setTimeout(() => { div.style.opacity = '0'; setTimeout(() => div.remove(), 300); }, 3000);
+}
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById(link.getAttribute('href').substring(1)).scrollIntoView({ behavior: 'smooth' });
+  });
 });
-
-
