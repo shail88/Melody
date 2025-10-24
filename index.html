@@ -1,318 +1,367 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>MelodyBox Tech Academy - Learn Tech Skills Online</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sharda Tech Courses</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: #0a1931;
+      color: white;
+      padding: 1.2rem 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 2rem auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title h2 {
+      color: #0a1931;
+      font-size: 2rem;
+      margin-bottom: .5rem;
+    }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .course-card {
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .course-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .course-content {
+      padding: 1.5rem;
+    }
+
+    .course-category {
+      display: inline-block;
+      background: #e0ecff;
+      color: #0a1931;
+      padding: 0.3rem 0.7rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .course-title {
+      margin: 1rem 0;
+      font-size: 1.3rem;
+      color: #222;
+    }
+
+    .course-instructor {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .instructor-avatar {
+      border-radius: 50%;
+      margin-right: 0.5rem;
+    }
+
+    .course-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .course-meta i {
+      color: #fbbf24;
+    }
+
+    .course-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .course-price .original-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 0.9rem;
+      margin-right: 0.3rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #0a1931;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #1a4b8c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: #0a1931;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    /* Free course badge */
+    .free-badge {
+      background: #16a34a;
+      color: white;
+      padding: 0.3rem 0.7rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    /* Popup modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-content input {
+      width: 90%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: #333;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .video-container {
+      margin-top: 1rem;
+      display: none;
+      text-align: center;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <i class="fas fa-code"></i>
-                MelodyBox Tech Academy
-            </div>
 
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+  <header>
+    <h1>Sharda Tech Courses</h1>
+  </header>
 
-            <div class="header-right">
-                <button class="btn btn-outline" id="loginBtn">Login</button>
-                <button class="btn btn-primary" id="signupBtn">Sign Up</button>
-            </div>
-        </nav>
-    </header>
+  <section class="courses" id="courses">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Courses</h2>
+        <p>Hand-picked tech courses to accelerate your career</p>
+      </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Master In-Demand Tech Skills with Expert-Led Courses</h1>
-                    <p>Join thousands of students learning Data Science, Web Development, and more from industry experts.</p>
-                    <button class="btn btn-primary" id="exploreBtn" style="padding: 0.8rem 2rem; font-size: 1rem;">Explore Courses</button>
-                </div>
-                <div class="hero-image">
-                    <img src="https://picsum.photos/seed/tech123/500/400.jpg" alt="Tech Learning">
-                </div>
+      <div class="courses-grid">
+
+        <!-- Data Science Course -->
+        <div class="course-card">
+          <div class="course-image"><img src="https://picsum.photos/seed/datascience456/400/200.jpg"></div>
+          <div class="course-content">
+            <span class="course-category">Data Science</span>
+            <h3 class="course-title">Complete Data Science Bootcamp 2025</h3>
+            <div class="course-instructor">
+              <img src="https://picsum.photos/seed/instructor1/30/30.jpg" class="instructor-avatar">
+              <span>Shailendra / Shimwa</span>
             </div>
+            <div class="course-meta">
+              <div><i class="fas fa-star"></i> 4.7 (25,456)</div>
+              <div><i class="far fa-clock"></i> 12.5 hours</div>
+            </div>
+            <div class="course-price">
+              <div><span class="original-price">$199.99</span><span class="price">$14.99</span></div>
+              <a href="https://www.udemy.com/course/the-complete-data-science-bootcamp-zero-to-hero-course/?referralCode=FE8CA5596AA9EDA79F0E" target="_blank" class="btn">Enroll Now</a>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Choose MelodyBox Tech Academy</h2>
-                <p>We bring you the best tech courses with exclusive benefits</p>
+        <!-- Web Dev Course -->
+        <div class="course-card">
+          <div class="course-image"><img src="https://picsum.photos/seed/webdev789/400/200.jpg"></div>
+          <div class="course-content">
+            <span class="course-category">Web Development</span>
+            <h3 class="course-title">The Complete Web Developer Course 2025</h3>
+            <div class="course-instructor">
+              <img src="https://picsum.photos/seed/instructor2/30/30.jpg" class="instructor-avatar">
+              <span>Shailendra Kumar / Shimwa Bonheur</span>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Industry-Relevant Skills</h3>
-                    <p>Learn the latest technologies and frameworks that are in high demand in the job market</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
-                    <h3>Expert Instructors</h3>
-                    <p>Learn from industry professionals with years of experience in their respective fields</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
-                    <h3>Certification</h3>
-                    <p>Earn certificates upon completion to showcase your new skills to employers</p>
-                </div>
+            <div class="course-meta">
+              <div><i class="fas fa-star"></i> 4.6 (32,234)</div>
+              <div><i class="far fa-clock"></i> 16 hours</div>
             </div>
+            <div class="course-price">
+              <div><span class="original-price">$199.99</span><span class="price">$14.99</span></div>
+              <a href="https://www.udemy.com/course/learn-html-css-and-javascript-for-absolute-beginners/?referralCode=7533F13615E4EFA586B2" target="_blank" class="btn">Enroll Now</a>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Courses Section -->
-    <section class="courses" id="courses">
-        <div class="container">
-            <div class="section-title">
-                <h2>Featured Courses</h2>
-                <p>Hand-picked tech courses to accelerate your career</p>
+        <!-- Free Software Strategy Course -->
+        <div class="course-card">
+          <div class="course-image"><img src="https://picsum.photos/seed/strategy456/400/200.jpg" alt="Software Strategy"></div>
+          <div class="course-content">
+            <span class="course-category free-badge">Free Course</span>
+            <h3 class="course-title">Software Strategy Masterclass (2 Hours)</h3>
+            <div class="course-instructor">
+              <img src="https://picsum.photos/seed/instructor5/30/30.jpg" class="instructor-avatar">
+              <span>Sharda Tech Team</span>
             </div>
-            <div class="courses-grid">
-                <!-- Data Science Course -->
-                <div class="course-card">
-                    <div class="course-image"><img src="https://picsum.photos/seed/datascience456/400/200.jpg" alt="Data Science Course"></div>
-                    <div class="course-content">
-                        <span class="course-category">Data Science</span>
-                        <h3 class="course-title">Complete Data Science Bootcamp 2025</h3>
-                        <div class="course-instructor">
-                            <img src="https://picsum.photos/seed/instructor1/30/30.jpg" alt="Instructor" class="instructor-avatar">
-                            <span>Shailendra/Shimwa</span>
-                        </div>
-                        <div class="course-meta">
-                            <div class="course-rating"><i class="fas fa-star"></i><span>4.7 (25,456)</span></div>
-                            <div class="course-duration"><i class="far fa-clock"></i><span>12.5 hours</span></div>
-                        </div>
-                        <div class="course-price">
-                            <div><span class="original-price">$199.99</span><span class="price">$14.99</span></div>
-                            <a href="https://www.udemy.com/course/the-complete-data-science-bootcamp-zero-to-hero-course/?referralCode=FE8CA5596AA9EDA79F0E" target="_blank" class="btn btn-primary">Enroll Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Web Development Course -->
-                <div class="course-card">
-                    <div class="course-image"><img src="https://picsum.photos/seed/webdev789/400/200.jpg" alt="Web Development Course"></div>
-                    <div class="course-content">
-                        <span class="course-category">Web Development</span>
-                        <h3 class="course-title">The Complete Web Developer Course 2025</h3>
-                        <div class="course-instructor">
-                            <img src="https://picsum.photos/seed/instructor2/30/30.jpg" alt="Instructor" class="instructor-avatar">
-                            <span>Shailendra Kumar/Shimwa Bonheur</span>
-                        </div>
-                        <div class="course-meta">
-                            <div class="course-rating"><i class="fas fa-star"></i><span>4.6 (32,234)</span></div>
-                            <div class="course-duration"><i class="far fa-clock"></i><span>16 hours</span></div>
-                        </div>
-                        <div class="course-price">
-                            <div><span class="original-price">$199.99</span><span class="price">$14.99</span></div>
-                            <a href="https://www.udemy.com/course/learn-html-css-and-javascript-for-absolute-beginners/?referralCode=7533F13615E4EFA586B2" target="_blank" class="btn btn-primary">Enroll Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- JavaScript Course -->
-                <div class="course-card">
-                    <div class="course-image"><img src="https://picsum.photos/seed/javascript321/400/200.jpg" alt="JavaScript Course"></div>
-                    <div class="course-content">
-                        <span class="course-category">JavaScript</span>
-                        <h3 class="course-title">JavaScript: The Complete Guide 2023</h3>
-                        <div class="course-instructor">
-                            <img src="https://picsum.photos/seed/instructor3/30/30.jpg" alt="Instructor" class="instructor-avatar">
-                            <span>Shimwa Bonheur/Shailendra</span>
-                        </div>
-                        <div class="course-meta">
-                            <div class="course-rating"><i class="fas fa-star"></i><span>4.8 (18,876)</span></div>
-                            <div class="course-duration"><i class="far fa-clock"></i><span>28 hours</span></div>
-                        </div>
-                        <div class="course-price">
-                            <div><span class="original-price">$199.99</span><span class="price">$14.99</span></div>
-                            <a href="https://www.udemy.com/course/learn-html-css-and-javascript-for-absolute-beginners/?referralCode=7533F13615E4EFA586B2" target="_blank" class="btn btn-primary">Enroll Now</a>
-                        </div>
-                    </div>
-                </div>
+            <div class="course-meta">
+              <div><i class="fas fa-star"></i> 5.0 (New)</div>
+              <div><i class="far fa-clock"></i> 2 hours</div>
             </div>
+            <div class="course-price">
+              <div><span class="price">FREE</span></div>
+              <button class="btn free-course-btn">Access Free Course</button>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>What Our Students Say</h2>
-                <p>Join thousands of satisfied tech learners</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The Data Science course was comprehensive and practical. I landed a job as a Data Analyst just 2 months after completing it!"</p>
-                    <div class="testimonial-author">
-                        <img src="https://picsum.photos/seed/student1/50/50.jpg" alt="Student" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Alex Johnson</h4>
-                            <p>Data Analyst</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"I went from knowing nothing about web development to building full-stack applications. The JavaScript course was a game-changer!"</p>
-                    <div class="testimonial-author">
-                        <img src="https://picsum.photos/seed/student2/50/50.jpg" alt="Student" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Sam Taylor</h4>
-                            <p>Frontend Developer</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"The HTML, CSS, and JavaScript course gave me the foundation I needed to start my career in tech. Highly recommend!"</p>
-                    <div class="testimonial-author">
-                        <img src="https://picsum.photos/seed/student3/50/50.jpg" alt="Student" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Jordan Lee</h4>
-                            <p>Web Developer</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta" id="contact">
-        <div class="container">
-            <h2>Start Your Tech Journey Today</h2>
-            <p>Get exclusive access to premium tech courses at unbeatable prices</p>
-            <div class="cta-actions">
-                <form class="email-form" id="newsletterForm">
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-                <div style="margin-top:1rem;">
-                    <button class="btn btn-outline" id="downloadPdfBtn" title="Open print dialog to save page as PDF"><i class="fas fa-file-pdf"></i> Download Page as PDF</button>
-                    <button class="btn" id="darkModeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i> Toggle Dark</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>About MelodyBox Tech Academy</h3>
-                    <p>Your gateway to mastering in-demand tech skills through expert-led online courses.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#courses">Courses</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Categories</h3>
-                    <ul>
-                        <li><a href="#">Data Science</a></li>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">JavaScript</a></li>
-                        <li><a href="#">Python</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 MelodyBox Tech Academy. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Login Modal -->
-    <div class="modal" id="loginModal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeLoginModal">&times;</span>
-            <h2>Login to Your Account</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                <button type="submit" class="form-submit">Login</button>
-            </form>
-            <div class="form-switch">
-                <p>Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
-            </div>
-        </div>
+      </div>
     </div>
+  </section>
 
-    <!-- Signup Modal -->
-    <div class="modal" id="signupModal">
-        <div class="modal-content">
-            <span class="close-modal" id="closeSignupModal">&times;</span>
-            <h2>Create Your Account</h2>
-            <form id="signupForm">
-                <div class="form-group">
-                    <label for="signupName">Full Name</label>
-                    <input type="text" id="signupName" required>
-                </div>
-                <div class="form-group">
-                    <label for="signupEmail">Email</label>
-                    <input type="email" id="signupEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="signupPassword">Password</label>
-                    <input type="password" id="signupPassword" required>
-                </div>
-                <button type="submit" class="form-submit">Sign Up</button>
-            </form>
-            <div class="form-switch">
-                <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
-            </div>
-        </div>
+  <!-- Modal for Email Collection -->
+  <div class="modal" id="emailModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>Access Free Courses</h2>
+      <p>Enter your name and email to unlock all free courses.</p>
+      <input type="text" id="userName" placeholder="Full Name" required>
+      <input type="email" id="userEmail" placeholder="Email Address" required>
+      <button class="btn" id="submitEmail">Unlock Now</button>
     </div>
+  </div>
 
-    <!-- Notification -->
-    <div class="notification" id="notification"></div>
+  <!-- Video container -->
+  <div class="video-container" id="freeCourseVideo">
+    <h3>Software Strategy Masterclass</h3>
+    <iframe src="https://www.youtube.com/embed/ysz5S6PUM-U" allowfullscreen></iframe>
+  </div>
 
-    <script src="script.js"></script>
+  <footer>© 2025 Sharda Tech. All Rights Reserved.</footer>
+
+  <script>
+    const freeButtons = document.querySelectorAll('.free-course-btn');
+    const modal = document.getElementById('emailModal');
+    const closeModal = document.getElementById('closeModal');
+    const submitEmail = document.getElementById('submitEmail');
+    const videoContainer = document.getElementById('freeCourseVideo');
+
+    // Open modal on click
+    freeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const user = localStorage.getItem('freeCourseUser');
+        if (user) {
+          videoContainer.style.display = 'block';
+          window.scrollTo({ top: videoContainer.offsetTop, behavior: 'smooth' });
+        } else {
+          modal.style.display = 'flex';
+        }
+      });
+    });
+
+    // Close modal
+    closeModal.onclick = () => modal.style.display = 'none';
+
+    // Submit email
+    submitEmail.addEventListener('click', () => {
+      const name = document.getElementById('userName').value.trim();
+      const email = document.getElementById('userEmail').value.trim();
+      if (!name || !email) {
+        alert('Please fill in all fields.');
+        return;
+      }
+      localStorage.setItem('freeCourseUser', JSON.stringify({ name, email }));
+      modal.style.display = 'none';
+      videoContainer.style.display = 'block';
+      window.scrollTo({ top: videoContainer.offsetTop, behavior: 'smooth' });
+      alert('Welcome, ' + name + '! You now have access to all free courses.');
+    });
+
+    // Close modal when clicking outside
+    window.onclick = (e) => {
+      if (e.target === modal) modal.style.display = 'none';
+    };
+
+    // Auto unlock if already registered
+    window.onload = () => {
+      if (localStorage.getItem('freeCourseUser')) {
+        document.querySelectorAll('.free-course-btn').forEach(b => b.textContent = 'Access Now');
+      }
+    };
+  </script>
 </body>
 </html>
