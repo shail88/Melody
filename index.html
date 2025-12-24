@@ -1,702 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MelodyBox Tech Academy - Learn Tech Skills Online</title>
+    <meta charset="UTF-8">
+    <title>Professional Tech Courses | Data Science & Web Development</title>
 
-  <!-- Fonts & Icons -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta -->
+    <meta name="description" content="Learn Data Science and Web Development with industry-focused bootcamps. Beginner friendly, practical, and career oriented Udemy courses.">
+    <meta name="keywords" content="Data Science Bootcamp, HTML CSS JavaScript Course, Udemy Programming, Learn Web Development">
+    <meta name="author" content="Sharda Tech">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Open Graph (Social Sharing) -->
+    <meta property="og:title" content="Career-Oriented Tech Courses">
+    <meta property="og:description" content="Result-driven Data Science & Web Development bootcamps for beginners.">
+    <meta property="og:type" content="website">
 
-  <style>
-    /* --- Base --- */
-    :root {
-      --primary: #0a1931;
-      --primary-600: #1a4b8c;
-      --muted: #666;
-      --accent: #16a34a;
-      --card-bg: #fff;
-      --page-bg: #f9f9f9;
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      font-family: "Poppins", sans-serif;
-      margin: 0;
-      background: var(--page-bg);
-      color: #222;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
-    .container { width: 92%; max-width: 1100px; margin: 0 auto; }
-
-    /* --- Header --- */
-    header { background: var(--primary); color: #fff; padding: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
-    nav.container { display:flex; align-items:center; justify-content:space-between; gap:1rem; }
-    .logo { display:flex; align-items:center; gap:.6rem; font-weight:600; font-size:1.05rem; }
-    .logo i { font-size:1.2rem; }
-    .nav-links { list-style:none; display:flex; gap:1rem; margin:0; padding:0; }
-    .nav-links a { color:#fff; text-decoration:none; font-weight:500; opacity:0.95; }
-    .header-right { display:flex; gap:.6rem; align-items:center; }
-
-    .btn { display:inline-block; background:var(--primary); color:white; padding:.55rem 1rem; border-radius:8px; text-decoration:none; border:0; cursor:pointer; font-weight:600; }
-    .btn:hover { background:var(--primary-600); }
-    .btn-outline { background:transparent; border:1px solid rgba(255,255,255,0.15); color:#fff; }
-
-    /* --- Hero --- */
-    .hero { padding:2.4rem 0; }
-    .hero-content { display:flex; gap:2rem; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-    .hero-text { flex:1 1 420px; }
-    .hero-text h1 { margin:0 0 .6rem 0; font-size:1.6rem; color:var(--primary); }
-    .hero-text p { margin:0 0 1rem 0; color:var(--muted); }
-    .hero-image img { width:100%; max-width:500px; border-radius:12px; box-shadow: 0 8px 30px rgba(10,25,49,0.08); }
-
-    /* --- Sections --- */
-    section { padding:2rem 0; }
-
-    .section-title { text-align:center; margin-bottom:1.6rem; }
-    .section-title h2 { margin:0; color:var(--primary); font-size:1.5rem; }
-    .section-title p { margin:.4rem 0 0; color:var(--muted); }
-
-    /* --- Features (kept simple) --- */
-    .features-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
-
-    /* --- Courses grid --- */
-    .courses-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem; }
-    .course-card {
-      background:var(--card-bg);
-      border-radius:12px;
-      overflow:hidden;
-      box-shadow: 0 6px 18px rgba(10,25,49,0.06);
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .course-card:hover { transform:translateY(-6px); box-shadow: 0 12px 30px rgba(10,25,49,0.09); }
-    .course-image img { width:100%; height:200px; object-fit:cover; display:block; }
-    .course-content { padding:1.15rem 1rem; }
-    .course-category { display:inline-block; background:#e6f0ff; color:var(--primary); padding:.25rem .6rem; border-radius:8px; font-weight:600; font-size:.85rem; }
-    .course-title { margin:.8rem 0; font-size:1.08rem; color:#111; }
-    .course-instructor { display:flex; align-items:center; gap:.6rem; color:var(--muted); font-size:.92rem; margin-bottom:.6rem; }
-    .instructor-avatar { width:34px; height:34px; border-radius:50%; object-fit:cover; }
-    .course-meta { display:flex; justify-content:space-between; color:var(--muted); font-size:.9rem; margin-bottom:.9rem; }
-    .course-price { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
-    .original-price { text-decoration:line-through; color:#999; font-size:.95rem; }
-    .price { font-weight:700; color:var(--primary); }
-
-    /* free badge */
-    .free-badge { background:var(--accent); color:white; padding:.28rem .6rem; border-radius:8px; font-weight:700; }
-
-    /* --- Free Courses hidden area (below Courses) --- */
-    #freeCoursesSection { display:none; margin-top:1.25rem; }
-    #freeCoursesSection .free-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
-
-    /* Coming soon card */
-    .coming-soon {
-      background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
-      border:1px dashed rgba(10,25,49,0.06);
-      padding:1.2rem;
-      border-radius:10px;
-      text-align:center;
-    }
-    .coming-soon h4 { margin:.6rem 0; }
-    .coming-soon p { color:var(--muted); margin:0.6rem 0 1rem; }
-
-    /* --- Footer --- */
-    footer { background:var(--primary); color:#fff; padding:1rem 0; text-align:center; margin-top:2rem; }
-
-    /* --- Modals --- */
-    .modal { display:none; position:fixed; inset:0; background:rgba(2,6,23,0.55); z-index:9999; justify-content:center; align-items:center; padding:1rem; }
-    .modal.open { display:flex; }
-    .modal-card { background:#fff; width:100%; max-width:420px; border-radius:12px; padding:1.2rem 1.1rem; position:relative; box-shadow:0 18px 50px rgba(10,25,49,0.12); }
-    .modal-card h3 { margin:0 0 .6rem; color:var(--primary); }
-    .modal-close { position:absolute; right:12px; top:10px; font-size:1.15rem; cursor:pointer; color:#666; }
-    .form-group { margin:0.6rem 0; }
-    .form-group label { display:block; font-size:.88rem; color:var(--muted); margin-bottom:.35rem; }
-    .form-group input { width:100%; padding:.65rem .8rem; border-radius:8px; border:1px solid #ddd; font-size:.95rem; }
-
-    /* small / responsive */
-    @media (max-width:760px) {
-      .hero-content { flex-direction:column-reverse; gap:1.2rem; }
-      nav.container { flex-direction:column; gap:.8rem; align-items:flex-start; }
-      .nav-links { display:flex; gap:.6rem; flex-wrap:wrap; }
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between;">
-      <div class="logo"><i class="fas fa-code"></i> MelodyBox Tech Academy</div>
 
-      <ul class="nav-links" style="display:flex; align-items:center; gap:1rem;">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#courses">Courses</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
-      <div class="header-right" id="authArea">
-        <button class="btn btn-outline" id="loginBtn">Login</button>
-        <button class="btn" id="signupBtn">Sign Up</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h1>Master In-Demand Tech Skills with Expert-Led Courses</h1>
-        <p>Join thousands of students learning Data Science, Web Development, and more from industry experts.</p>
-        <button class="btn" id="exploreBtn" style="padding:.6rem 1rem;">Explore Courses</button>
-      </div>
-      <div class="hero-image">
-        <img src="https://picsum.photos/seed/tech123/500/400.jpg" alt="Tech Learning">
-      </div>
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="features" id="features">
+<header class="hero">
     <div class="container">
-      <div class="section-title">
-        <h2>Why Choose MelodyBox Tech Academy</h2>
-        <p>We bring you the best tech courses with exclusive benefits</p>
-      </div>
-
-      <div class="features-grid container" style="gap:1rem;">
-        <div class="course-card" style="padding:1rem;">
-          <div style="font-size:1.4rem;"><i class="fas fa-laptop-code"></i></div>
-          <h3 style="margin:.4rem 0 0 0;">Industry-Relevant Skills</h3>
-          <p style="color:var(--muted); margin:0.5rem 0 0;">Learn the latest technologies and frameworks that are in high demand in the job market.</p>
-        </div>
-        <div class="course-card" style="padding:1rem;">
-          <div style="font-size:1.4rem;"><i class="fas fa-user-graduate"></i></div>
-          <h3 style="margin:.4rem 0 0 0;">Expert Instructors</h3>
-          <p style="color:var(--muted); margin:0.5rem 0 0;">Learn from industry professionals with years of experience in their respective fields.</p>
-        </div>
-        <div class="course-card" style="padding:1rem;">
-          <div style="font-size:1.4rem;"><i class="fas fa-certificate"></i></div>
-          <h3 style="margin:.4rem 0 0 0;">Certification</h3>
-          <p style="color:var(--muted); margin:0.5rem 0 0;">Earn certificates upon completion to showcase your new skills to employers.</p>
-        </div>
-      </div>
+        <h1>Build Your Career in Tech</h1>
+        <p>Industry-Focused Bootcamps in <strong>Data Science</strong> and <strong>Web Development</strong></p>
+        <a href="#courses" class="btn-primary">Explore Courses</a>
     </div>
-  </section>
+</header>
 
-  <!-- Courses -->
-  <section class="courses" id="courses">
-    <div class="container">
-      <div class="section-title">
-        <h2>Featured Courses</h2>
-        <p>Hand-picked tech courses to accelerate your career</p>
-      </div>
+<section id="courses" class="courses container">
 
-      <div class="courses-grid">
-        <!-- Data Science Course -->
-        <div class="course-card">
-          <div class="course-image"><img src="https://picsum.photos/seed/datascience456/400/200.jpg" alt="Data Science Course"></div>
-          <div class="course-content">
-            <span class="course-category">Data Science</span>
-            <h3 class="course-title">Complete Data Science Bootcamp 2025</h3>
-            <div class="course-instructor">
-              <img src="https://picsum.photos/seed/instructor1/30/30.jpg" class="instructor-avatar" alt="Instructor">
-              <span>Shailendra / Shimwa</span>
-            </div>
-            <div class="course-meta">
-              <div><i class="fas fa-star"></i> 4.7 (25,456)</div>
-              <div><i class="far fa-clock"></i> 12.5 hours</div>
-            </div>
-            <div class="course-price">
-              <div><span class="original-price">$199.99</span> <span class="price">$14.99</span></div>
-              <a href="https://www.udemy.com/course/the-complete-data-science-bootcamp-zero-to-hero-course/?referralCode=FE8CA5596AA9EDA79F0E" target="_blank" class="btn">Enroll Now</a>
-            </div>
-          </div>
-        </div>
+    <!-- Data Science Course -->
+    <div class="course-card">
+        <h2>📊 Data Science Bootcamp: Zero to Hero</h2>
+        <p class="price">$22.99 USD</p>
 
-        <!-- Web Development Course -->
-        <div class="course-card">
-          <div class="course-image"><img src="https://picsum.photos/seed/webdev789/400/200.jpg" alt="Web Development Course"></div>
-          <div class="course-content">
-            <span class="course-category">Web Development</span>
-            <h3 class="course-title">The Complete Web Developer Course 2025</h3>
-            <div class="course-instructor">
-              <img src="https://picsum.photos/seed/instructor2/30/30.jpg" class="instructor-avatar" alt="Instructor">
-              <span>Shailendra Kumar / Shimwa Bonheur</span>
-            </div>
-            <div class="course-meta">
-              <div><i class="fas fa-star"></i> 4.6 (32,234)</div>
-              <div><i class="far fa-clock"></i> 16 hours</div>
-            </div>
-            <div class="course-price">
-              <div><span class="original-price">$199.99</span> <span class="price">$14.99</span></div>
-              <a href="https://www.udemy.com/course/learn-html-css-and-javascript-for-absolute-beginners/?referralCode=7533F13615E4EFA586B2" target="_blank" class="btn">Enroll Now</a>
-            </div>
-          </div>
-        </div>
+        <ul>
+            <li>✔ Beginner to Advanced Data Science</li>
+            <li>✔ Practical, Real-World Approach</li>
+            <li>✔ Career-Focused Curriculum</li>
+        </ul>
 
-        <!-- JavaScript Course -->
-        <div class="course-card">
-          <div class="course-image"><img src="https://picsum.photos/seed/javascript321/400/200.jpg" alt="JavaScript Course"></div>
-          <div class="course-content">
-            <span class="course-category">JavaScript</span>
-            <h3 class="course-title">JavaScript: The Complete Guide 2023</h3>
-            <div class="course-instructor">
-              <img src="https://picsum.photos/seed/instructor3/30/30.jpg" class="instructor-avatar" alt="Instructor">
-              <span>Shimwa Bonheur / Shailendra</span>
-            </div>
-            <div class="course-meta">
-              <div><i class="fas fa-star"></i> 4.8 (18,876)</div>
-              <div><i class="far fa-clock"></i> 28 hours</div>
-            </div>
-            <div class="course-price">
-              <div><span class="original-price">$199.99</span> <span class="price">$14.99</span></div>
-              <a href="https://www.udemy.com/course/learn-html-css-and-javascript-for-absolute-beginners/?referralCode=7533F13615E4EFA586B2" target="_blank" class="btn">Enroll Now</a>
-            </div>
-          </div>
-        </div>
+        <p class="rating">⭐ 5.0 Rating (Student Review)</p>
 
-        <!-- Free Software Strategy Course (invites sign-up) -->
-        <div class="course-card">
-          <div class="course-image"><img src="https://picsum.photos/seed/strategy456/400/200.jpg" alt="Software Strategy"></div>
-          <div class="course-content">
-            <span class="course-category free-badge">Free Course</span>
-            <h3 class="course-title">Software Strategy for Beginners (Coming Soon)</h3>
-            <div class="course-instructor">
-              <img src="https://picsum.photos/seed/instructor5/30/30.jpg" class="instructor-avatar" alt="Instructor">
-              <span>MelodyBox Tech Academy Team</span>
-            </div>
-            <div class="course-meta">
-              <div><i class="fas fa-star"></i> 5.0 (New)</div>
-              <div><i class="far fa-clock"></i> 2 hours</div>
-            </div>
-            <div class="course-price">
-              <div><span class="price">FREE</span></div>
-              <button class="btn" id="accessFreeBtn">Access Free Course</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Hidden Free Courses Section (appears after signup/login) -->
-  <section id="freeCoursesSection" class="container">
-    <div class="section-title">
-      <h2>Your Free Courses</h2>
-      <p>All free courses unlocked for you — access anytime after signup.</p>
+        <a href="https://www.udemy.com/course/the-complete-data-science-bootcamp-zero-to-hero-course/?referralCode=FE8CA5596AA9EDA79F0E"
+           target="_blank"
+           class="btn-secondary">
+           Enroll Now
+        </a>
     </div>
 
-    <div class="free-grid">
-      <div class="course-card coming-soon">
-        <img src="https://picsum.photos/seed/strategythumb/600/220" alt="Coming Soon" style="width:100%; border-radius:8px; object-fit:cover; height:160px;">
-        <h4 style="margin-top:.8rem;">Software Strategy for Beginners</h4>
-        <p style="margin:.4rem 0; color:var(--muted);">Duration: 2 hours · Instructor: MelodyBox Tech Academy Team</p>
-        <p style="margin:.4rem 0 1rem; color:var(--muted);">Video & course materials coming soon. You will be notified here when content is published.</p>
-        <button class="btn" id="startFreeBtn" disabled>Start Learning (Coming Soon)</button>
-      </div>
+    <!-- Web Development Course -->
+    <div class="course-card">
+        <h2>🌐 HTML, CSS & JavaScript for Beginners</h2>
+        <p class="price">$11 – $15 USD</p>
+
+        <ul>
+            <li>✔ Absolute Beginner Friendly</li>
+            <li>✔ Hands-On Practical Learning</li>
+            <li>✔ Real Web Projects</li>
+        </ul>
+
+        <p class="rating">⭐ 4.2 Course Rating</p>
+
+        <a href="https://www.udemy.com/course/learn-html-css-and-javascript-for-absolute-beginners/?referralCode=7533F13615E4EFA586B2"
+           target="_blank"
+           class="btn-secondary">
+           Start Learning
+        </a>
     </div>
-  </section>
 
-  <!-- Testimonials -->
-  <section id="testimonials">
-    <div class="container section-title">
-      <h2>What Our Students Say</h2>
-      <p>Join thousands of satisfied tech learners</p>
+</section>
+
+<section class="instructors container">
+    <h2>👨‍🏫 Meet Your Instructors</h2>
+
+    <div class="instructor">
+        <h3>Bonheur Shimwa</h3>
+        <p>IT Instructor | Front-End Developer | Ethical Hacker</p>
+        <p>5+ years experience · Practical & hands-on teaching</p>
     </div>
 
-    <div class="container" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem;">
-      <div class="course-card" style="padding:1rem;">
-        <p style="margin:0 0 .8rem;">"The Data Science course was comprehensive and practical. I landed a job as a Data Analyst just 2 months after completing it!"</p>
-        <div style="display:flex; align-items:center; gap:.6rem;">
-          <img src="https://picsum.photos/seed/student1/50/50.jpg" style="width:44px;height:44px;border-radius:50%;" alt="student">
-          <div>
-            <strong>Alex Johnson</strong><br><span style="color:var(--muted); font-size:.9rem;">Data Analyst</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="course-card" style="padding:1rem;">
-        <p style="margin:0 0 .8rem;">"I went from knowing nothing about web development to building full-stack applications. The JavaScript course was a game-changer!"</p>
-        <div style="display:flex; align-items:center; gap:.6rem;">
-          <img src="https://picsum.photos/seed/student2/50/50.jpg" style="width:44px;height:44px;border-radius:50%;" alt="student">
-          <div>
-            <strong>Sam Taylor</strong><br><span style="color:var(--muted); font-size:.9rem;">Frontend Developer</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="course-card" style="padding:1rem;">
-        <p style="margin:0 0 .8rem;">"The HTML, CSS, and JavaScript course gave me the foundation I needed to start my career in tech. Highly recommend!"</p>
-        <div style="display:flex; align-items:center; gap:.6rem;">
-          <img src="https://picsum.photos/seed/student3/50/50.jpg" style="width:44px;height:44px;border-radius:50%;" alt="student">
-          <div>
-            <strong>Jordan Lee</strong><br><span style="color:var(--muted); font-size:.9rem;">Web Developer</span>
-          </div>
-        </div>
-      </div>
+    <div class="instructor">
+        <h3>Shailendra Kumar</h3>
+        <p>Developer & Digital Marketing Specialist</p>
+        <p>Expert in ASP.NET Core, Python, React, Databases & Cloud</p>
     </div>
-  </section>
+</section>
 
-  <!-- CTA / Contact -->
-  <section id="contact">
-    <div class="container" style="text-align:center;">
-      <h2>Start Your Tech Journey Today</h2>
-      <p style="color:var(--muted);">Get exclusive access to premium tech courses at unbeatable prices.</p>
-      <form id="newsletterForm" style="display:inline-flex; gap:.5rem; align-items:center; margin-top:.6rem;">
-        <input type="email" id="newsletterEmail" placeholder="Enter your email address" required style="padding:.6rem .8rem; border-radius:8px; border:1px solid #ddd;">
-        <button type="submit" class="btn">Subscribe</button>
-      </form>
-    </div>
-  </section>
+<section class="cta">
+    <h2>🚀 Start Your Learning Journey Today</h2>
+    <p>Build real skills. Get real results.</p>
+    <a href="#courses" class="btn-primary">Join Now</a>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
-      <div>
-        <strong>About MelodyBox Tech Academy</strong>
-        <div style="color:rgba(255,255,255,0.85); font-size:.95rem;">Your gateway to mastering in-demand tech skills through expert-led online courses.</div>
-      </div>
-      <div style="text-align:right;">
-        <div style="color:rgba(255,255,255,0.9); margin-bottom:.3rem;">© 2025 MelodyBox Tech Academy. All rights reserved.</div>
-      </div>
-    </div>
-  </footer>
+<footer>
+    <p>© 2025 Sharda Tech · All Rights Reserved</p>
+</footer>
 
-  <!-- --- Modals: Signup & Login (preserve original UX) --- -->
-  <!-- Signup Modal -->
-  <div class="modal" id="signupModal">
-    <div class="modal-card">
-      <span class="modal-close" id="closeSignup">&times;</span>
-      <h3>Create Your Account</h3>
-      <div class="form-group">
-        <label for="signupName">Full Name</label>
-        <input id="signupName" type="text" placeholder="Your full name">
-      </div>
-      <div class="form-group">
-        <label for="signupEmail">Email</label>
-        <input id="signupEmail" type="email" placeholder="you@example.com">
-      </div>
-      <div class="form-group">
-        <label for="signupPassword">Password</label>
-        <input id="signupPassword" type="password" placeholder="Choose a password">
-      </div>
-      <div style="margin-top:.6rem; display:flex; gap:.6rem; justify-content:flex-end;">
-        <button class="btn btn-outline" id="cancelSignup">Cancel</button>
-        <button class="btn" id="submitSignup">Sign Up</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Login Modal -->
-  <div class="modal" id="loginModal">
-    <div class="modal-card">
-      <span class="modal-close" id="closeLogin">&times;</span>
-      <h3>Login to Your Account</h3>
-      <div class="form-group">
-        <label for="loginEmail">Email</label>
-        <input id="loginEmail" type="email" placeholder="you@example.com">
-      </div>
-      <div class="form-group">
-        <label for="loginPassword">Password</label>
-        <input id="loginPassword" type="password" placeholder="Your password">
-      </div>
-      <div style="margin-top:.6rem; display:flex; gap:.6rem; justify-content:flex-end;">
-        <button class="btn btn-outline" id="cancelLogin">Cancel</button>
-        <button class="btn" id="submitLogin">Login</button>
-      </div>
-      <div style="margin-top:.85rem; color:var(--muted); font-size:.93rem;">
-        <span>Don't have an account?</span>
-        <button class="btn btn-outline" id="openSignupFromLogin" style="padding:.3rem .6rem; font-size:.88rem;">Sign Up</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Small notification area (simple) -->
-  <div id="toast" style="position:fixed; right:16px; bottom:18px; background:rgba(10,25,49,0.95); color:#fff; padding:.6rem .9rem; border-radius:8px; display:none; z-index:10000;"></div>
-
-  <script>
-    /******************************************************************
-     * MelodyBox: LocalStorage-based signup/login + free-course unlock
-     *
-     * Data stored locally:
-     *  - Key 'melodyboxUser' => JSON { name, email, password? }   (for now, password stored locally as plain text if provided)
-     *  - Key 'melodyboxLoggedIn' => 'true' or 'false'
-     *
-     * Note: A placeholder function sendToGoogleSheet(data) is included
-     * but commented out (ready for future enable).
-     ******************************************************************/
-
-    // --- Helper functions ---
-    const $ = (sel) => document.querySelector(sel);
-    const $all = (sel) => document.querySelectorAll(sel);
-
-    function showToast(msg, ms = 2800) {
-      const t = $('#toast');
-      t.textContent = msg;
-      t.style.display = 'block';
-      clearTimeout(t._t);
-      t._t = setTimeout(()=> t.style.display = 'none', ms);
-    }
-
-    // Placeholder for future Google Sheets integration (not active)
-    function sendToGoogleSheet(userObj) {
-      // Example stub — DO NOT RUN until you configure a Google Apps Script endpoint.
-      // fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(userObj)
-      // }).then(res => res.json()).then(r => console.log('sheet:', r)).catch(e => console.warn('sheet err', e));
-    }
-
-    // --- Auth & local storage management ---
-    function saveUserToLocal(user) {
-      // user = { name, email, password? }
-      localStorage.setItem('melodyboxUser', JSON.stringify(user));
-      // optionally track as logged in
-      localStorage.setItem('melodyboxLoggedIn', 'true');
-      // placeholder call (inactive)
-      // sendToGoogleSheet(user);
-    }
-
-    function getUserFromLocal() {
-      const raw = localStorage.getItem('melodyboxUser');
-      return raw ? JSON.parse(raw) : null;
-    }
-
-    function setLoggedIn(flag) {
-      localStorage.setItem('melodyboxLoggedIn', flag ? 'true' : 'false');
-      updateAuthUI();
-      if (flag) unlockFreeCourses();
-      else lockFreeCourses();
-    }
-
-    function isLoggedIn() {
-      return localStorage.getItem('melodyboxLoggedIn') === 'true';
-    }
-
-    function logoutUser() {
-      // For privacy, we can choose to keep user details but clear logged-in flag,
-      // or to remove the user completely. Here we clear only the logged-in flag.
-      localStorage.setItem('melodyboxLoggedIn', 'false');
-      updateAuthUI();
-      lockFreeCourses();
-      showToast('You have been logged out.');
-    }
-
-    // --- UI: update header auth area ---
-    function updateAuthUI() {
-      const authArea = $('#authArea');
-      authArea.innerHTML = ''; // reset
-
-      if (isLoggedIn()) {
-        const user = getUserFromLocal();
-        const welcome = document.createElement('div');
-        welcome.style.display = 'flex';
-        welcome.style.alignItems = 'center';
-        welcome.style.gap = '.6rem';
-
-        const nameSpan = document.createElement('span');
-        nameSpan.textContent = user && user.name ? `Welcome, ${user.name.split(' ')[0]}` : 'Welcome';
-        nameSpan.style.color = '#fff';
-        nameSpan.style.fontWeight = '600';
-
-        const logoutBtn = document.createElement('button');
-        logoutBtn.className = 'btn btn-outline';
-        logoutBtn.style.background = 'transparent';
-        logoutBtn.style.color = '#fff';
-        logoutBtn.textContent = 'Logout';
-        logoutBtn.onclick = () => {
-          logoutUser();
-        };
-
-        welcome.appendChild(nameSpan);
-        welcome.appendChild(logoutBtn);
-        authArea.appendChild(welcome);
-      } else {
-        const login = document.createElement('button');
-        login.className = 'btn btn-outline';
-        login.id = 'loginBtnHeader';
-        login.textContent = 'Login';
-        login.onclick = () => openModal('#loginModal');
-
-        const signup = document.createElement('button');
-        signup.className = 'btn';
-        signup.id = 'signupBtnHeader';
-        signup.textContent = 'Sign Up';
-        signup.onclick = () => openModal('#signupModal');
-
-        authArea.appendChild(login);
-        authArea.appendChild(signup);
-      }
-    }
-
-    // --- Modal helpers ---
-    function openModal(selector) {
-      document.querySelector(selector).classList.add('open');
-    }
-    function closeModal(selector) {
-      document.querySelector(selector).classList.remove('open');
-    }
-
-    // wire modal close buttons & actions
-    document.getElementById('signupBtn').addEventListener('click', ()=> openModal('#signupModal'));
-    document.getElementById('loginBtn').addEventListener('click', ()=> openModal('#loginModal'));
-
-    // header dynamic buttons may be replaced on load; attach handlers for static ones
-    $('#cancelSignup').addEventListener('click', ()=> closeModal('#signupModal'));
-    $('#cancelLogin').addEventListener('click', ()=> closeModal('#loginModal'));
-    $('#closeSignup').addEventListener('click', ()=> closeModal('#signupModal'));
-    $('#closeLogin').addEventListener('click', ()=> closeModal('#loginModal'));
-    $('#openSignupFromLogin').addEventListener('click', ()=> { closeModal('#loginModal'); openModal('#signupModal'); });
-
-    // Signup flow
-    $('#submitSignup').addEventListener('click', () => {
-      const name = ($('#signupName').value || '').trim();
-      const email = ($('#signupEmail').value || '').trim().toLowerCase();
-      const password = ($('#signupPassword').value || '').trim();
-
-      if (!name || !email) {
-        showToast('Please enter name and email.');
-        return;
-      }
-
-      const user = { name, email, createdAt: new Date().toISOString() };
-      // store password optionally (here we store if provided) — note: localStorage is not secure for passwords
-      if (password) user.password = password;
-
-      saveUserToLocal(user);
-      setLoggedIn(true);
-      closeModal('#signupModal');
-      updateAuthUI();
-      showToast('Welcome, ' + (name.split(' ')[0] || 'Learner') + '! Free courses unlocked.');
-
-      // If freeCoursesSection is hidden, show and scroll there
-      unlockFreeCoursesAndGo();
-    });
-
-    // Login flow
-    $('#submitLogin').addEventListener('click', () => {
-      const email = ($('#loginEmail').value || '').trim().toLowerCase();
-      const password = ($('#loginPassword').value || '').trim();
-
-      const stored = getUserFromLocal();
-      if (!stored || !stored.email) {
-        showToast('No user found. Please sign up first.');
-        return;
-      }
-
-      if (email !== stored.email) {
-        showToast('Email not recognized. Please sign up with this email first.');
-        return;
-      }
-
-      // If password exists in storage, and user provided one, do a basic check; otherwise allow login
-      if (stored.password && stored.password !== password) {
-        showToast('Incorrect password.');
-        return;
-      }
-
-      localStorage.setItem('melodyboxLoggedIn', 'true');
-      closeModal('#loginModal');
-      updateAuthUI();
-      showToast('Logged in successfully.');
-      unlockFreeCoursesAndGo();
-    });
-
-    // Access Free button (on course card)
-    document.getElementById('accessFreeBtn').addEventListener('click', () => {
-      if (isLoggedIn()) {
-        // Already logged in -> show free section
-        unlockFreeCoursesAndGo();
-      } else {
-        openModal('#signupModal');
-      }
-    });
-
-    // Newsletter subscribe (simple local storage store)
-    document.getElementById('newsletterForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = ($('#newsletterEmail').value || '').trim().toLowerCase();
-      if (!email) { showToast('Enter a valid email'); return; }
-      const existing = getUserFromLocal();
-      if (existing && existing.email === email) {
-        showToast('You are already registered — check your free courses section.');
-        // set logged in so they can access free courses
-        localStorage.setItem('melodyboxLoggedIn','true');
-        updateAuthUI();
-        unlockFreeCoursesAndGo();
-        return;
-      }
-      // Save minimal user record
-      const u = { name: '', email, createdAt: new Date().toISOString() };
-      saveUserToLocal(u);
-      showToast('Thanks — email saved. Free courses unlocked.');
-      updateAuthUI();
-      unlockFreeCoursesAndGo();
-    });
-
-    // Unlock free courses UI helpers
-    function unlockFreeCourses() {
-      const sec = document.getElementById('freeCoursesSection');
-      sec.style.display = 'block';
-      // enable start btn if real content is present in future
-      const startBtn = document.getElementById('startFreeBtn');
-      startBtn.disabled = true; // content coming soon; keep disabled
-    }
-
-    function lockFreeCourses() {
-      const sec = document.getElementById('freeCoursesSection');
-      sec.style.display = 'none';
-    }
-
-    function unlockFreeCoursesAndGo() {
-      unlockFreeCourses();
-      setTimeout(() => {
-        document.getElementById('freeCoursesSection').scrollIntoView({ behavior:'smooth', block:'start' });
-      }, 150);
-    }
-
-    // On page load: if already logged in -> show free courses
-    window.addEventListener('DOMContentLoaded', () => {
-      // Initialize header auth area
-      updateAuthUI();
-
-      // If user previously registered but logged-out flag missing, default to false
-      if (!localStorage.getItem('melodyboxLoggedIn')) localStorage.setItem('melodyboxLoggedIn','false');
-
-      if (isLoggedIn()) {
-        unlockFreeCourses();
-      } else {
-        lockFreeCourses();
-      }
-
-      // Explore button scroll
-      $('#exploreBtn').addEventListener('click', () => {
-        document.getElementById('courses').scrollIntoView({ behavior:'smooth', block:'start' });
-      });
-
-      // If user is stored but not marked logged in, you might want auto-login (optional).
-      // For now we require explicit login/signup to mark logged in.
-    });
-
-    // Close modals when clicking outside or pressing Escape
-    window.addEventListener('click', (e) => {
-      const modals = ['#signupModal','#loginModal'];
-      modals.forEach(s => {
-        const el = document.querySelector(s);
-        if (!el) return;
-        if (el.classList.contains('open') && e.target === el) el.classList.remove('open');
-      });
-    });
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeModal('#signupModal'); closeModal('#loginModal'); } });
-
-  </script>
+<script src="script.js"></script>
 </body>
 </html>
-
